@@ -1,13 +1,35 @@
-document.getElementById("temperature").innerHTML="32°C";
+const API_URL = "https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
 
-document.getElementById("water").innerHTML="48 KL";
+async function loadDashboard() {
 
-document.getElementById("electricity").innerHTML="3850 kWh";
+    try {
 
-document.getElementById("diesel").innerHTML="120 L";
+        const response = await fetch(API_URL);
 
-document.getElementById("tank").innerHTML="84%";
+        const data = await response.json();
 
-document.getElementById("stp").innerHTML="42 KL";
+        document.getElementById("temperature").innerHTML = data.temperature + "°C";
 
-document.getElementById("solar").innerHTML="220 kWh";
+        document.getElementById("water").innerHTML = data.water + " KL";
+
+        document.getElementById("electricity").innerHTML = data.electricity + " kWh";
+
+        document.getElementById("diesel").innerHTML = data.diesel + " L";
+
+        document.getElementById("tank").innerHTML = data.tank + "%";
+
+        document.getElementById("stp").innerHTML = data.stp + " KL";
+
+        document.getElementById("solar").innerHTML = data.solar + " kWh";
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+loadDashboard();
+
+setInterval(loadDashboard,30000);
