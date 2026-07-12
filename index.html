@@ -5,15 +5,17 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Organo Facility Dashboard</title>
+<title>Organo Antharam Daily OFM Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+<!-- Background Overlay -->
 
 <div class="overlay"></div>
 
@@ -23,7 +25,7 @@
 
 <div class="logo">
 
-<img src="assets/logo.png" id="logo">
+<img src="assets/logo.png">
 
 </div>
 
@@ -37,15 +39,17 @@
 
 <div class="datetime">
 
-<div id="date">Loading Date...</div>
+<div id="currentDate">Loading...</div>
 
-<div id="time">Loading Time...</div>
+<div id="currentTime">Loading...</div>
 
 </div>
 
 </header>
 
-<section id="energySection">
+<!-- ================= ENERGY ================= -->
+
+<section>
 
 <h2>⚡ ENERGY</h2>
 
@@ -53,15 +57,19 @@
 
 </section>
 
-<section id="waterSection">
+<!-- ================= WATER ================= -->
 
-<h2>💧 WATER</h2>
+<section>
+
+<h2>💧 WATER MANAGEMENT</h2>
 
 <div id="waterCards" class="cards"></div>
 
 </section>
 
-<section id="visitorSection">
+<!-- ================= VISITORS ================= -->
+
+<section>
 
 <h2>👥 VISITORS</h2>
 
@@ -69,7 +77,9 @@
 
 </section>
 
-<section id="securitySection">
+<!-- ================= SECURITY ================= -->
+
+<section>
 
 <h2>🚓 SECURITY ROUNDS</h2>
 
@@ -77,31 +87,43 @@
 
 </section>
 
-<section id="cctvSection">
+<!-- ================= CCTV ================= -->
 
-<h2>📹 CCTV STATUS</h2>
+<section>
+
+<h2>📷 CCTV STATUS</h2>
 
 <div id="cctvCards" class="cards"></div>
 
 </section>
 
-<section id="bookingSection">
+<!-- ================= DG ================= -->
 
-<h2>🏠 AMENITIES BOOKINGS</h2>
+<section>
 
-<div id="bookingCards" class="cards"></div>
+<h2>⛽ DIESEL GENERATORS</h2>
+
+<div id="dgCards" class="cards"></div>
 
 </section>
 
-<section id="noticeSection">
+<!-- ================= AMENITIES ================= -->
 
-<h2>📢 REMARKS</h2>
+<section>
 
-<div id="remarks">
+<h2>🏠 AMENITIES BOOKINGS</h2>
 
-Loading...
+<div id="amenityCards" class="cards"></div>
 
-</div>
+</section>
+
+<!-- ================= REMARKS ================= -->
+
+<section>
+
+<h2>📝 REMARKS</h2>
+
+<div id="remarkCards" class="cards"></div>
 
 </section>
 
