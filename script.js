@@ -5,20 +5,26 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(API_URL);
-
         const data = await response.json();
 
         clearCards();
 
-        document.getElementById("currentDate").innerHTML =
-            "📅 " + data[0].value;
+        // Date
+        const dateItem = data.find(x => x.metric === "Date");
+
+        if(dateItem){
+
+            document.getElementById("currentDate").innerHTML =
+                "📅 " + dateItem.value;
+
+        }
 
         document.getElementById("currentTime").innerHTML =
             "🕒 " + new Date().toLocaleTimeString();
 
-        data.forEach(item => {
+        data.forEach(item=>{
 
-            if (item.metric === "Date") return;
+            if(item.metric==="Date") return;
 
             addCard(item);
 
@@ -36,143 +42,172 @@ async function loadDashboard() {
 
 function clearCards(){
 
-document.getElementById("energyCards").innerHTML="";
-
-document.getElementById("waterCards").innerHTML="";
-
-document.getElementById("visitorCards").innerHTML="";
-
-document.getElementById("securityCards").innerHTML="";
-
-document.getElementById("cctvCards").innerHTML="";
-
-document.getElementById("dgCards").innerHTML="";
-
-document.getElementById("amenityCards").innerHTML="";
-
-document.getElementById("remarkCards").innerHTML="";
+    energyCards.innerHTML="";
+    waterCards.innerHTML="";
+    visitorCards.innerHTML="";
+    securityCards.innerHTML="";
+    cctvCards.innerHTML="";
+    dgCards.innerHTML="";
+    amenityCards.innerHTML="";
+    remarkCards.innerHTML="";
 
 }
 
-function cardHTML(item,color="blue"){
+function createCard(item,color){
 
-return `
+    return `
 
-<div class="card ${color}">
+    <div class="card ${color}">
 
-<h3>${item.metric}</h3>
+        <h3>${item.metric}</h3>
 
-<h1>${item.value===""?"-":item.value}</h1>
+        <h1>${item.value==="" ? "-" : item.value}</h1>
 
-<p>${item.unit}</p>
+        <p>${item.unit}</p>
 
-</div>
+    </div>
 
-`;
+    `;
 
 }
 
 function addCard(item){
 
-const name=item.metric.toLowerCase();
+    let metric=item.metric.toLowerCase();
 
-if(name.includes("energy") || name.includes("solar")){
+    //------------------------------------------------
+    // ENERGY
+    //------------------------------------------------
 
-document.getElementById("energyCards").innerHTML+=cardHTML(item,"orange");
+    if(
 
-}
+        metric.includes("tf1") ||
 
-else if(
+        metric.includes("tf2") ||
 
-name.includes("water") ||
+        metric.includes("solar")
 
-name.includes("tank") ||
+    ){
 
-name.includes("well") ||
+        energyCards.innerHTML+=createCard(item,"orange");
 
-name.includes("stp")
+    }
 
-){
+    //------------------------------------------------
+    // WATER
+    //------------------------------------------------
 
-document.getElementById("waterCards").innerHTML+=cardHTML(item,"blue");
+    else if(
 
-}
+        metric.includes("water") ||
 
-else if(
+        metric.includes("tank") ||
 
-name.includes("owner") ||
+        metric.includes("well") ||
 
-name.includes("visitor") ||
+        metric.includes("stp")
 
-name.includes("others")
+    ){
 
-){
+        waterCards.innerHTML+=createCard(item,"blue");
 
-document.getElementById("visitorCards").innerHTML+=cardHTML(item,"green");
+    }
 
-}
+    //------------------------------------------------
+    // VISITORS
+    //------------------------------------------------
 
-else if(
+    else if(
 
-name.includes("security") ||
+        metric.includes("owner") ||
 
-name.includes("round")
+        metric.includes("others") ||
 
-){
+        metric.includes("visited")
 
-document.getElementById("securityCards").innerHTML+=cardHTML(item,"orange");
+    ){
 
-}
+        visitorCards.innerHTML+=createCard(item,"green");
 
-else if(
+    }
 
-name.includes("cctv") ||
+    //------------------------------------------------
+    // SECURITY
+    //------------------------------------------------
 
-name.includes("camera")
+    else if(
 
-){
+        metric.includes("round")
 
-document.getElementById("cctvCards").innerHTML+=cardHTML(item,"green");
+    ){
 
-}
+        securityCards.innerHTML+=createCard(item,"orange");
 
-else if(
+    }
 
-name.includes("dg")
+    //------------------------------------------------
+    // CCTV
+    //------------------------------------------------
 
-||
+    else if(
 
-name.includes("diesel")
+        metric.includes("camera") ||
 
-){
+        metric.includes("cctv")
 
-document.getElementById("dgCards").innerHTML+=cardHTML(item,"red");
+    ){
 
-}
+        cctvCards.innerHTML+=createCard(item,"green");
 
-else if(
+    }
 
-name.includes("room") ||
+    //------------------------------------------------
+    // DG
+    //------------------------------------------------
 
-name.includes("parking") ||
+    else if(
 
-name.includes("home")
+        metric.includes("dg") ||
 
-){
+        metric.includes("diesel")
 
-document.getElementById("amenityCards").innerHTML+=cardHTML(item,"blue");
+    ){
 
-}
+        dgCards.innerHTML+=createCard(item,"red");
 
-else if(
+    }
 
-name.includes("remark")
+    //------------------------------------------------
+    // AMENITIES
+    //------------------------------------------------
 
-){
+    else if(
 
-document.getElementById("remarkCards").innerHTML+=cardHTML(item,"green");
+        metric.includes("suite") ||
 
-}
+        metric.includes("parking") ||
+
+        metric.includes("home")
+
+    ){
+
+        amenityCards.innerHTML+=createCard(item,"blue");
+
+    }
+
+    //------------------------------------------------
+    // REMARKS
+    //------------------------------------------------
+
+    else if(
+
+        metric.includes("remark")
+
+    ){
+
+        remarkCards.innerHTML+=createCard(item,"green");
+
+    }
 
 }
 
