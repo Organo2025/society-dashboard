@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-<title>Society Dashboard</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Organo Facility Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -12,54 +15,106 @@
 
 <body>
 
-<div class="header">
+<div class="overlay"></div>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+
+<img src="assets/logo.png" id="logo">
+
+</div>
+
+<div class="title">
 
 <h1>ORGANO ANTHARAM</h1>
 
-<p>Daily Utility Dashboard</p>
+<h2>Daily OFM Dashboard</h2>
 
 </div>
 
-<div class="dashboard">
+<div class="datetime">
 
-<div class="card">
-<h2>🌡 Temperature</h2>
-<h1 id="temperature">--</h1>
+<div id="date">Loading Date...</div>
+
+<div id="time">Loading Time...</div>
+
 </div>
 
-<div class="card">
-<h2>💧 Water</h2>
-<h1 id="water">--</h1>
+</header>
+
+<section id="energySection">
+
+<h2>⚡ ENERGY</h2>
+
+<div id="energyCards" class="cards"></div>
+
+</section>
+
+<section id="waterSection">
+
+<h2>💧 WATER</h2>
+
+<div id="waterCards" class="cards"></div>
+
+</section>
+
+<section id="visitorSection">
+
+<h2>👥 VISITORS</h2>
+
+<div id="visitorCards" class="cards"></div>
+
+</section>
+
+<section id="securitySection">
+
+<h2>🚓 SECURITY ROUNDS</h2>
+
+<div id="securityCards" class="cards"></div>
+
+</section>
+
+<section id="cctvSection">
+
+<h2>📹 CCTV STATUS</h2>
+
+<div id="cctvCards" class="cards"></div>
+
+</section>
+
+<section id="bookingSection">
+
+<h2>🏠 AMENITIES BOOKINGS</h2>
+
+<div id="bookingCards" class="cards"></div>
+
+</section>
+
+<section id="noticeSection">
+
+<h2>📢 REMARKS</h2>
+
+<div id="remarks">
+
+Loading...
+
 </div>
 
-<div class="card">
-<h2>⚡ Electricity</h2>
-<h1 id="electricity">--</h1>
-</div>
+</section>
 
-<div class="card">
-<h2>⛽ DG Diesel</h2>
-<h1 id="diesel">--</h1>
-</div>
+<footer>
 
-<div class="card">
-<h2>🚰 Tank Level</h2>
-<h1 id="tank">--</h1>
-</div>
+Organo Eco Habitats Pvt Ltd
 
-<div class="card">
-<h2>♻ STP Flow</h2>
-<h1 id="stp">--</h1>
-</div>
-
-<div class="card">
-<h2>☀ Solar</h2>
-<h1 id="solar">--</h1>
-</div>
+</footer>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
