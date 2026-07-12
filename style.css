@@ -1,186 +1,312 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 
-    background:url("assets/background.jpg");
+background:url("assets/background.jpg") center center/cover no-repeat fixed;
 
-    background-size:cover;
+min-height:100vh;
 
-    background-position:center;
+color:white;
 
-    background-repeat:no-repeat;
-
-    background-attachment:fixed;
-
-    color:white;
-
-    min-height:100vh;
+overflow-x:hidden;
 
 }
+
+/* Dark Overlay */
 
 .overlay{
 
-    position:fixed;
+position:fixed;
 
-    top:0;
+top:0;
+left:0;
 
-    left:0;
+width:100%;
+height:100%;
 
-    width:100%;
+background:rgba(5,15,25,.72);
 
-    height:100%;
+backdrop-filter:blur(2px);
 
-    background:rgba(5,15,30,.60);
-
-    z-index:-1;
+z-index:-1;
 
 }
+
+/* Main Container */
 
 .container{
 
-    padding:25px;
+width:95%;
+
+margin:auto;
+
+padding-bottom:40px;
 
 }
 
+/* ===========================
+HEADER
+=========================== */
+
 header{
 
-    display:flex;
+display:flex;
 
-    justify-content:space-between;
+justify-content:space-between;
 
-    align-items:center;
+align-items:center;
 
-    margin-bottom:30px;
+padding:25px 0;
+
+border-bottom:2px solid rgba(255,255,255,.15);
+
+margin-bottom:30px;
 
 }
 
 .logo img{
 
-    height:70px;
+height:90px;
 
 }
 
 .title{
 
-    text-align:center;
+text-align:center;
+
+flex:1;
 
 }
 
 .title h1{
 
-    font-size:40px;
+font-size:42px;
 
-    font-weight:bold;
+font-weight:bold;
+
+letter-spacing:2px;
 
 }
 
 .title h2{
 
-    font-size:20px;
+margin-top:10px;
 
-    margin-top:8px;
+font-size:22px;
 
-    color:#e2e8f0;
+color:#dcdcdc;
+
+font-weight:normal;
 
 }
 
 .datetime{
 
-    text-align:right;
+text-align:right;
 
-    font-size:20px;
+font-size:22px;
+
+line-height:1.7;
+
+font-weight:bold;
 
 }
 
+/* ===========================
+SECTION
+=========================== */
+
 section{
 
-    margin-bottom:35px;
+margin-bottom:45px;
 
 }
 
 section h2{
 
-    margin-bottom:15px;
+font-size:30px;
 
-    font-size:28px;
+margin-bottom:20px;
+
+padding-left:8px;
+
+border-left:6px solid #00d4ff;
 
 }
+
+/* ===========================
+CARDS
+=========================== */
 
 .cards{
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
-    gap:20px;
+gap:20px;
 
 }
 
+/* ===========================
+CARD
+=========================== */
+
 .card{
 
-    background:rgba(255,255,255,.15);
+background:rgba(255,255,255,.12);
 
-    backdrop-filter:blur(15px);
+backdrop-filter:blur(10px);
 
-    border-radius:18px;
+border-radius:18px;
 
-    padding:25px;
+padding:22px;
 
-    border:1px solid rgba(255,255,255,.25);
+text-align:center;
 
-    transition:.3s;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+transition:.35s;
+
+border:1px solid rgba(255,255,255,.08);
 
 }
 
 .card:hover{
 
-    transform:translateY(-6px);
+transform:translateY(-6px);
+
+background:rgba(255,255,255,.18);
 
 }
 
 .card h3{
 
-    font-size:20px;
+font-size:24px;
 
-    margin-bottom:15px;
+margin-bottom:18px;
+
+color:white;
+
+}
+
+.card h1{
+
+font-size:52px;
+
+margin-bottom:10px;
+
+color:#00f5ff;
 
 }
 
 .card p{
 
-    font-size:38px;
+font-size:22px;
 
-    font-weight:bold;
+color:#ddd;
+
+}
+
+/* ===========================
+STATUS COLORS
+=========================== */
+
+.green{
+
+border-left:8px solid #00ff7f;
 
 }
 
-#remarks{
+.red{
 
-    background:rgba(255,255,255,.15);
-
-    backdrop-filter:blur(15px);
-
-    padding:25px;
-
-    border-radius:20px;
-
-    font-size:22px;
+border-left:8px solid #ff4444;
 
 }
+
+.orange{
+
+border-left:8px solid orange;
+
+}
+
+.blue{
+
+border-left:8px solid #00c3ff;
+
+}
+
+/* ===========================
+FOOTER
+=========================== */
 
 footer{
 
-    margin-top:40px;
+margin-top:40px;
 
-    text-align:center;
+padding:20px;
 
-    font-size:18px;
+text-align:center;
 
-    color:#ddd;
+font-size:20px;
+
+background:rgba(0,0,0,.30);
+
+border-radius:15px;
+
+}
+
+/* ===========================
+MOBILE
+=========================== */
+
+@media(max-width:900px){
+
+header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.title h1{
+
+font-size:30px;
+
+}
+
+.title h2{
+
+font-size:18px;
+
+}
+
+.datetime{
+
+text-align:center;
+
+}
+
+.card h1{
+
+font-size:40px;
+
+}
+
+section h2{
+
+font-size:24px;
+
+}
 
 }
