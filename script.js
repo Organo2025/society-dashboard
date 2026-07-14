@@ -123,8 +123,14 @@ async function loadWeather(){
 
         const weather = await res.json();
 
-        document.getElementById("weather").innerHTML =
-        `🌤 ${Math.round(weather.main.temp)}°C`;
+        const icon = weather.weather[0].icon;
+const description = weather.weather[0].main;
+
+document.getElementById("weather").innerHTML = `
+<img src="https://openweathermap.org/img/wn/${icon}@2x.png"
+style="width:32px;height:32px;vertical-align:middle;">
+${Math.round(weather.main.temp)}°C ${description}
+`;
 
     }
 
