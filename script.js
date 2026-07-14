@@ -1,211 +1,160 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
 
+const sections = {
+    energy: document.getElementById("energyCards"),
+    water: document.getElementById("waterCards"),
+    visitors: document.getElementById("visitorCards"),
+    security: document.getElementById("securityCards"),
+    cctv: document.getElementById("cctvCards"),
+    dg: document.getElementById("dgCards"),
+    amenities: document.getElementById("amenityCards"),
+    remarks: document.getElementById("remarkCards")
+};
+
+function clearPanels() {
+    Object.values(sections).forEach(panel => panel.innerHTML = "");
+}
+
+function createItem(metric, value, unit) {
+
+    return `
+        <div class="item">
+            <div>
+                <div class="metric">${metric}</div>
+            </div>
+
+            <div>
+                <span class="value">${value === "" ? "-" : value}</span>
+                <span class="unit">${unit || ""}</span>
+            </div>
+        </div>
+    `;
+}
+
+function addTo(panel, metric, value, unit) {
+
+    panel.innerHTML += createItem(metric, value, unit);
+
+}
+
+function updateClock() {
+
+    const now = new Date();
+
+    document.getElementById("currentTime").innerHTML =
+        "🕒 " + now.toLocaleTimeString();
+
+}
+
 async function loadDashboard() {
 
     try {
 
         const response = await fetch(API_URL);
+
         const data = await response.json();
 
-        clearCards();
+        clearPanels();
 
-        // Date
-        const dateItem = data.find(x => x.metric === "Date");
+        data.forEach(row => {
 
-        if(dateItem){
+            const metric = row.metric;
+            const value = row.value;
+            const unit = row.unit;
 
-            document.getElementById("currentDate").innerHTML =
-                "📅 " + dateItem.value;
+            if(metric === "Date"){
 
-        }
+                document.getElementById("currentDate").innerHTML =
+                    "📅 " + value;
 
-        document.getElementById("currentTime").innerHTML =
-            "🕒 " + new Date().toLocaleTimeString();
+                return;
 
-        data.forEach(item=>{
+            }
 
-            if(item.metric==="Date") return;
+            const m = metric.toLowerCase();
 
-            addCard(item);
+            if(
+                m.includes("tf1") ||
+                m.includes("tf2") ||
+                m.includes("solar")
+            ){
+
+                addTo(sections.energy, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("water") ||
+                m.includes("tank") ||
+                m.includes("well") ||
+                m.includes("stp")
+            ){
+
+                addTo(sections.water, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("owner") ||
+                m.includes("others") ||
+                m.includes("visited")
+            ){
+
+                addTo(sections.visitors, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("round")
+            ){
+
+                addTo(sections.security, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("camera") ||
+                m.includes("cctv")
+            ){
+
+                addTo(sections.cctv, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("diesel") ||
+                m.includes("dg")
+            ){
+
+                addTo(sections.dg, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("room") ||
+                m.includes("parking") ||
+                m.includes("home")
+            ){
+
+                addTo(sections.amenities, metric, value, unit);
+
+            }
+
+            else if(
+                m.includes("remark")
+            ){
+
+                addTo(sections.remarks, metric, value, unit);
+
+            }
 
         });
 
     }
 
-    catch(error){
+    catch(err){
 
-        console.log(error);
-
-    }
-
-}
-
-function clearCards(){
-
-    energyCards.innerHTML="";
-    waterCards.innerHTML="";
-    visitorCards.innerHTML="";
-    securityCards.innerHTML="";
-    cctvCards.innerHTML="";
-    dgCards.innerHTML="";
-    amenityCards.innerHTML="";
-    remarkCards.innerHTML="";
-
-}
-
-function createCard(item,color){
-
-    return `
-
-    <div class="card ${color}">
-
-        <h3>${item.metric}</h3>
-
-        <h1>${item.value==="" ? "-" : item.value}</h1>
-
-        <p>${item.unit}</p>
-
-    </div>
-
-    `;
-
-}
-
-function addCard(item){
-
-    let metric=item.metric.toLowerCase();
-
-    //------------------------------------------------
-    // ENERGY
-    //------------------------------------------------
-
-    if(
-
-        metric.includes("tf1") ||
-
-        metric.includes("tf2") ||
-
-        metric.includes("solar")
-
-    ){
-
-        energyCards.innerHTML+=createCard(item,"orange");
-
-    }
-
-    //------------------------------------------------
-    // WATER
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("water") ||
-
-        metric.includes("tank") ||
-
-        metric.includes("well") ||
-
-        metric.includes("stp")
-
-    ){
-
-        waterCards.innerHTML+=createCard(item,"blue");
-
-    }
-
-    //------------------------------------------------
-    // VISITORS
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("owner") ||
-
-        metric.includes("others") ||
-
-        metric.includes("visited")
-
-    ){
-
-        visitorCards.innerHTML+=createCard(item,"green");
-
-    }
-
-    //------------------------------------------------
-    // SECURITY
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("round")
-
-    ){
-
-        securityCards.innerHTML+=createCard(item,"orange");
-
-    }
-
-    //------------------------------------------------
-    // CCTV
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("camera") ||
-
-        metric.includes("cctv")
-
-    ){
-
-        cctvCards.innerHTML+=createCard(item,"green");
-
-    }
-
-    //------------------------------------------------
-    // DG
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("dg") ||
-
-        metric.includes("diesel")
-
-    ){
-
-        dgCards.innerHTML+=createCard(item,"red");
-
-    }
-
-    //------------------------------------------------
-    // AMENITIES
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("suite") ||
-
-        metric.includes("parking") ||
-
-        metric.includes("home")
-
-    ){
-
-        amenityCards.innerHTML+=createCard(item,"blue");
-
-    }
-
-    //------------------------------------------------
-    // REMARKS
-    //------------------------------------------------
-
-    else if(
-
-        metric.includes("remark")
-
-    ){
-
-        remarkCards.innerHTML+=createCard(item,"green");
+        console.error(err);
 
     }
 
@@ -213,4 +162,8 @@ function addCard(item){
 
 loadDashboard();
 
+updateClock();
+
 setInterval(loadDashboard,60000);
+
+setInterval(updateClock,1000);
