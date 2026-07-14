@@ -103,38 +103,28 @@ setInterval(updateClock,1000);
 // Weather
 // ----------------------------
 
-async function loadWeather(){
+async function loadWeather() {
 
-    if(WEATHER_API_KEY===""){
+    try {
 
-        document.getElementById("weather").innerHTML =
-        "🌤 Antharam";
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${LATITUDE}&lon=${LONGITUDE}&appid=${WEATHER_API_KEY}&units=metric`
+        );
 
-        return;
-
-    }
-
-    try{
-
-        const url =
-`https://api.openweathermap.org/data/2.5/weather?lat=${LATITUDE}&lon=${LONGITUDE}&appid=${WEATHER_API_KEY}&units=metric`;
-
-        const res = await fetch(url);
-
-        const weather = await res.json();
+        const weather = await response.json();
 
         const icon = weather.weather[0].icon;
-const description = weather.weather[0].main;
 
-document.getElementById("weather").innerHTML = `
-<img src="https://openweathermap.org/img/wn/${icon}@2x.png"
-style="width:32px;height:32px;vertical-align:middle;">
-${Math.round(weather.main.temp)}°C ${description}
-`;
+        document.getElementById("weather").innerHTML = `
+            <img src="https://openweathermap.org/img/wn/${icon}@2x.png"
+                 style="width:30px;height:30px;vertical-align:middle;">
+            ${Math.round(weather.main.temp)}°C
+            ${weather.weather[0].main}
+        `;
 
-    }
+    } catch (err) {
 
-    catch(err){
+        document.getElementById("weather").innerHTML = "Weather Unavailable";
 
         console.log(err);
 
