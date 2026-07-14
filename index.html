@@ -4,9 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Organo Antharam Daily OFM Dashboard</title>
+<title>ORGANO OFM DASHBOARD</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,119 +16,151 @@
 
 <div class="overlay"></div>
 
-<div class="dashboard">
+<div class="container">
 
-<!-- ================= HEADER ================= -->
+    <!-- HEADER -->
 
-<header class="header">
+    <header>
 
-<div class="logo">
-<img src="assets/logo.png" alt="Organo Logo">
+        <div class="logoBox">
+            <img src="assets/logo.png" id="logo">
+        </div>
+
+        <div class="titleBox">
+
+            <h1>ORGANO ANTHARAM</h1>
+
+            <h2>Daily OFM Dashboard</h2>
+
+        </div>
+
+        <div class="infoBox">
+
+            <div id="weather">
+                ☀ Loading Weather...
+            </div>
+
+            <div id="currentDate">
+                📅 Loading Date...
+            </div>
+
+            <div id="currentTime">
+                🕒 Loading Time...
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ===================== -->
+
+    <div class="dashboardGrid">
+
+
+
+        <!-- ENERGY -->
+
+        <section class="panel">
+
+            <h2>⚡ ENERGY</h2>
+
+            <div id="energyCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- WATER -->
+
+        <section class="panel">
+
+            <h2>💧 WATER</h2>
+
+            <div id="waterCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- VISITORS -->
+
+        <section class="panel">
+
+            <h2>👥 VISITORS</h2>
+
+            <div id="visitorCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- SECURITY -->
+
+        <section class="panel">
+
+            <h2>🚓 SECURITY ROUNDS</h2>
+
+            <div id="securityCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- CCTV -->
+
+        <section class="panel">
+
+            <h2>📷 CCTV STATUS</h2>
+
+            <div id="cctvCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- DG -->
+
+        <section class="panel">
+
+            <h2>🛢 DIESEL GENERATORS</h2>
+
+            <div id="dgCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- BOOKINGS -->
+
+        <section class="panel">
+
+            <h2>🏠 AMENITIES BOOKINGS</h2>
+
+            <div id="amenityCards" class="cards"></div>
+
+        </section>
+
+
+
+        <!-- REMARKS -->
+
+        <section class="panel remarksPanel">
+
+            <h2>📝 REMARKS</h2>
+
+            <div id="remarkCards"></div>
+
+        </section>
+
+
+
+    </div>
+
 </div>
 
-<div class="title">
 
-<h1>ORGANO ANTHARAM</h1>
-
-<h2>Daily OFM Dashboard</h2>
-
-</div>
-
-<div class="datetime">
-
-<div id="currentDate">Loading Date...</div>
-
-<div id="currentTime">Loading Time...</div>
-
-</div>
-
-</header>
-
-<!-- ================= MAIN GRID ================= -->
-
-<div class="grid">
-
-<!-- ENERGY -->
-
-<div class="panel">
-
-<h2>⚡ ENERGY</h2>
-
-<div id="energyCards" class="panelContent"></div>
-
-</div>
-
-<!-- WATER -->
-
-<div class="panel">
-
-<h2>💧 WATER</h2>
-
-<div id="waterCards" class="panelContent"></div>
-
-</div>
-
-<!-- VISITORS -->
-
-<div class="panel">
-
-<h2>👥 VISITORS</h2>
-
-<div id="visitorCards" class="panelContent"></div>
-
-</div>
-
-<!-- SECURITY -->
-
-<div class="panel">
-
-<h2>🚓 SECURITY ROUNDS</h2>
-
-<div id="securityCards" class="panelContent"></div>
-
-</div>
-
-<!-- CCTV -->
-
-<div class="panel">
-
-<h2>📷 CCTV STATUS</h2>
-
-<div id="cctvCards" class="panelContent"></div>
-
-</div>
-
-<!-- DG -->
-
-<div class="panel">
-
-<h2>⛽ DG STATUS</h2>
-
-<div id="dgCards" class="panelContent"></div>
-
-</div>
-
-<!-- AMENITIES -->
-
-<div class="panel">
-
-<h2>🏠 AMENITIES BOOKINGS</h2>
-
-<div id="amenityCards" class="panelContent"></div>
-
-</div>
-
-<!-- REMARKS -->
-
-<div class="panel">
-
-<h2>📝 REMARKS</h2>
-
-<div id="remarkCards" class="panelContent"></div>
-
-</div>
-
-</div>
 
 <footer>
 
@@ -136,7 +168,7 @@ Organo Eco Habitats Pvt Ltd
 
 </footer>
 
-</div>
+
 
 <script src="script.js"></script>
 
