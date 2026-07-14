@@ -16,7 +16,7 @@ const API_URL =
 // ----------------------------
 // We'll add your API key later.
 
-const WEATHER_API_KEY = "8827779504663578c215e060dc823501";
+const WEATHER_API_KEY = "c09b61b39ee9308f837366dcb8345d08";
 
 const LATITUDE = 17.3050;
 const LONGITUDE = 78.2180;
