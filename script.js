@@ -51,6 +51,16 @@ function clearDashboard(){
 // Create Card
 function createCard(title,value,unit,color="blue"){
 
+    const numeric = Number(value);
+
+    let percent = 0;
+
+    if(!isNaN(numeric)){
+
+        percent = Math.min(100,Math.max(0,numeric));
+
+    }
+
     return `
 
 <div class="card ${color}">
@@ -60,6 +70,16 @@ function createCard(title,value,unit,color="blue"){
 <h1>${value}</h1>
 
 <p>${unit}</p>
+
+<div class="progress">
+
+<div class="progressFill"
+
+style="width:${percent}%">
+
+</div>
+
+</div>
 
 </div>
 
@@ -254,32 +274,47 @@ async function loadDashboard(){
 
             else if(
 
-                metric.includes("pm") ||
+metric.includes("location")
 
-                metric.includes("air pollution") ||
+){
 
-                metric.includes("location")
+    window.airLocation = item.value;
 
-            ){
+}
 
-                sections.air.innerHTML +=
+else if(
 
-                createCard(
+metric.includes("pm")
 
-                    item.metric,
+){
 
-                    item.value,
+    window.pmValue = item.value;
 
-                    item.unit,
+}
 
-                    "getStatusColor(item.metric, item.value)"
+else if(
 
-                );
+metric.includes("air pollution")
 
-            }
+){
+
+    // Nothing here—status will be calculated from PM2.5
+
+}
 
         });
+if(window.airLocation && window.pmValue){
 
+    sections.air.innerHTML =
+    createAirCard(
+
+        window.airLocation,
+
+        window.pmValue
+
+    );
+
+}
         // Update footer time
         const now = new Date();
 
@@ -494,4 +529,93 @@ function getStatusColor(metric, value){
 
 }
 
+function getCCTVHealth(working,down){
+
+    const total = working + down;
+
+    if(total===0) return 0;
+
+    return Math.round((working/total)*100);
+
+}
+function airQuality(pm){
+
+    pm = Number(pm);
+
+    if(pm <= 30) return "🟢 GOOD";
+
+    if(pm <= 60) return "🟡 MODERATE";
+
+    return "🔴 POOR";
+
+}
+function createAirCard(location, pmValue){
+
+    const pm = Number(pmValue);
+
+    let status = "";
+    let color = "";
+    let percent = 100;
+
+    if(pm <= 30){
+
+        status = "🟢 GOOD";
+        color = "#00C853";
+        percent = 90;
+
+    }
+
+    else if(pm <= 60){
+
+        status = "🟡 MODERATE";
+        color = "#FFD600";
+        percent = 60;
+
+    }
+
+    else{
+
+        status = "🔴 POOR";
+        color = "#F44336";
+        percent = 30;
+
+    }
+
+    return `
+
+<div class="card blue">
+
+<h3>🌍 AIR QUALITY</h3>
+
+<p>📍 ${location}</p>
+
+<h1>${pm}</h1>
+
+<p>µg/m³</p>
+
+<div style="margin-top:10px;
+font-size:18px;
+font-weight:bold;
+color:${color};">
+
+${status}
+
+</div>
+
+<div class="progress">
+
+<div class="progressFill"
+
+style="width:${percent}%;
+background:${color};">
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
 
