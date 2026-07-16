@@ -1,841 +1,762 @@
 /*==================================================
-ORGANO OFM DASHBOARD V3
-Designed for 55" TV
-===================================================*/
+ORGANO OFM DASHBOARD V3.1
+Optimized for 55" TV
+==================================================*/
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-html,
-body{
+html,body{
 
-width:100%;
-height:100%;
+    width:100%;
+    height:100%;
 
-overflow:hidden;
+    overflow:hidden;
 
-background:#08131f;
-
-color:#ffffff;
+    color:#fff;
 
 }
 
-/*=============================
+/*==========================================
 BACKGROUND
-=============================*/
+==========================================*/
 
 body{
 
-background-image:url("assets/background.jpg");
+    background:url("assets/background_day.jpg");
 
-background-size:cover;
+    background-size:cover;
 
-background-position:center;
+    background-position:center;
 
-background-repeat:no-repeat;
+    background-repeat:no-repeat;
 
-background-attachment:fixed;
+    transition:background 1s ease;
 
 }
 
 #backgroundOverlay{
 
-position:fixed;
+    position:fixed;
 
-top:0;
+    inset:0;
 
-left:0;
+    background:linear-gradient(
 
-width:100%;
+        rgba(0,0,0,.15),
 
-height:100%;
+        rgba(0,0,0,.35)
 
-background:linear-gradient(
+    );
 
-rgba(0,0,0,.25),
+    backdrop-filter:blur(2px);
 
-rgba(0,0,0,.45)
-
-);
-
-backdrop-filter:blur(2px);
-
-z-index:-1;
+    z-index:-1;
 
 }
 
-/*=============================
-MAIN DASHBOARD
-=============================*/
+/*==========================================
+MAIN
+==========================================*/
 
 .dashboard{
 
-width:100vw;
+    width:100vw;
 
-height:100vh;
+    height:100vh;
 
-padding:12px;
+    display:flex;
 
-display:flex;
+    flex-direction:column;
 
-flex-direction:column;
+    padding:12px;
 
 }
 
-/*=============================
+/*==========================================
 HEADER
-=============================*/
+==========================================*/
 
 header{
 
-height:90px;
+    height:110px;
 
-display:grid;
+    display:grid;
 
-grid-template-columns:
+    grid-template-columns:
 
-240px
+    220px
 
-1fr
+    1fr
 
-280px;
+    320px;
 
-align-items:center;
+    align-items:center;
 
-margin-bottom:10px;
+    margin-bottom:12px;
 
 }
 
-/*=============================
+/*==========================================
 LOGO
-=============================*/
+==========================================*/
 
 .logo{
 
-height:72px;
+    height:75px;
 
-object-fit:contain;
+    object-fit:contain;
 
 }
 
-/*=============================
+/*==========================================
 TITLE
-=============================*/
+==========================================*/
 
 .titleBox{
 
-text-align:center;
+    text-align:center;
 
 }
 
 .titleBox h1{
 
-font-size:42px;
+    font-size:42px;
 
-font-weight:700;
+    font-weight:700;
 
-letter-spacing:3px;
+    letter-spacing:2px;
 
 }
 
 .titleBox h2{
 
-margin-top:6px;
+    font-size:18px;
 
-font-size:18px;
+    font-weight:400;
 
-font-weight:300;
+    color:#ddd;
 
-color:#ddd;
+    margin-top:6px;
 
 }
 
 #lastUpdated{
 
-margin-top:8px;
+    margin-top:8px;
 
-font-size:15px;
+    color:#8fd3ff;
 
-color:#90caf9;
+    font-size:15px;
 
 }
 
-/*=============================
-RIGHT INFO
-=============================*/
+/*==========================================
+RIGHT PANEL
+==========================================*/
 
 .rightBox{
 
-text-align:right;
+    text-align:right;
 
 }
-
-.rightBox div{
-
-margin:5px 0;
-
-font-size:19px;
-
-font-weight:600;
-
-}
-
-/*=============================
-GRID
-=============================*/
-
-main{
-
-flex:1;
-
-display:grid;
-
-grid-template-columns:
-
-1fr 1fr;
-
-grid-template-rows:
-
-repeat(4,1fr);
-
-gap:12px;
-
-}
-/*=============================
-PANELS
-=============================*/
-
-section{
-
-background:rgba(20,30,45,.35);
-
-backdrop-filter:blur(15px);
-
--webkit-backdrop-filter:blur(15px);
-
-border-radius:22px;
-
-padding:14px;
-
-display:flex;
-
-flex-direction:column;
-
-box-shadow:
-
-0 8px 30px rgba(0,0,0,.35);
-
-border:1px solid rgba(255,255,255,.08);
-
-overflow:hidden;
-
-transition:.35s;
-
-}
-
-section:hover{
-
-transform:translateY(-3px);
-
-box-shadow:
-
-0 12px 35px rgba(0,0,0,.45);
-
-}
-
-/*=============================
-SECTION TITLE
-=============================*/
-
-.sectionTitle{
-
-font-size:26px;
-
-font-weight:700;
-
-margin-bottom:12px;
-
-padding-left:12px;
-
-border-left:5px solid #00d4ff;
-
-letter-spacing:1px;
-
-}
-
-/*=============================
-CARD GRID
-=============================*/
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:12px;
-
-flex:1;
-
-align-content:start;
-
-}
-
-/*=============================
-CARD
-=============================*/
-
-.card{
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(12px);
-
-border-radius:16px;
-
-padding:14px;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-min-height:92px;
-
-transition:.3s;
-
-border-left:5px solid #2196f3;
-
-}
-
-.card:hover{
-
-background:rgba(255,255,255,.12);
-
-transform:scale(1.02);
-
-}
-
-/*=============================
-CARD TITLE
-=============================*/
-
-.card h3{
-
-font-size:16px;
-
-font-weight:600;
-
-margin-bottom:8px;
-
-color:#f5f5f5;
-
-}
-
-/*=============================
-CARD VALUE
-=============================*/
-
-.card h1{
-
-font-size:34px;
-
-font-weight:700;
-
-line-height:1;
-
-margin-bottom:6px;
-
-color:#ffffff;
-
-}
-
-/*=============================
-CARD UNIT
-=============================*/
-
-.card p{
-
-font-size:14px;
-
-color:#d5d5d5;
-
-}
-
-/*=============================
-STATUS COLORS
-=============================*/
-
-.green{
-
-border-left-color:#4CAF50;
-
-}
-
-.orange{
-
-border-left-color:#FF9800;
-
-}
-
-.red{
-
-border-left-color:#F44336;
-
-}
-
-.blue{
-
-border-left-color:#03A9F4;
-
-}
-
-.yellow{
-
-border-left-color:#FFD600;
-
-}
-
-/*=============================
-AIR QUALITY
-=============================*/
-
-.good{
-
-color:#00E676;
-
-font-weight:bold;
-
-}
-
-.moderate{
-
-color:#FFD600;
-
-font-weight:bold;
-
-}
-
-.poor{
-
-color:#FF5252;
-
-font-weight:bold;
-
-}
-/*========================================
-WEATHER CARD
-========================================*/
 
 #weather{
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    justify-content:flex-end;
 
-justify-content:flex-end;
+    align-items:center;
 
-gap:10px;
+    gap:10px;
 
-font-size:20px;
+    font-size:20px;
 
-font-weight:600;
+    font-weight:600;
 
-color:#FFD54F;
+    color:#FFD54F;
 
 }
 
 #weather img{
 
-width:34px;
-
-height:34px;
+    width:42px;
 
 }
 
-/*========================================
-DATE & TIME
-========================================*/
-
 #currentDate{
 
-font-size:18px;
+    margin-top:6px;
 
-font-weight:500;
-
-margin-top:6px;
-
-color:#E3F2FD;
+    font-size:18px;
 
 }
 
 #currentTime{
 
-font-size:22px;
+    margin-top:6px;
 
-font-weight:700;
+    font-size:24px;
 
-margin-top:5px;
-
-color:#FFFFFF;
-
-letter-spacing:1px;
+    font-weight:700;
 
 }
 
-/*========================================
-LAST UPDATED
-========================================*/
+/*==========================================
+GRID
+==========================================*/
 
-#lastUpdated{
+main{
 
-font-size:15px;
+    flex:1;
 
-color:#81D4FA;
+    display:grid;
 
-margin-top:6px;
+    grid-template-columns:1fr 1fr;
+
+    grid-template-rows:repeat(4,1fr);
+
+    gap:12px;
+
+}
+/*==========================================
+SECTION PANELS
+==========================================*/
+
+section{
+
+    background:rgba(18,28,40,.35);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:210px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+    transition:.35s;
 
 }
 
-/*========================================
-FOOTER
-========================================*/
+section:hover{
 
-footer{
+    transform:translateY(-3px);
 
-height:40px;
-
-margin-top:10px;
-
-padding:0 20px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-background:rgba(0,0,0,.35);
-
-backdrop-filter:blur(10px);
-
-border-radius:12px;
-
-font-size:15px;
-
-color:#ECEFF1;
+    box-shadow:0 14px 35px rgba(0,0,0,.45);
 
 }
 
-/*========================================
-SCROLLBAR
-========================================*/
-
-::-webkit-scrollbar{
-
-width:6px;
-
-height:6px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:#00BCD4;
-
-border-radius:10px;
-
-}
-
-/*========================================
-ANIMATIONS
-========================================*/
-
-.card{
-
-animation:cardFade .5s ease;
-
-}
-
-@keyframes cardFade{
-
-0%{
-
-opacity:0;
-
-transform:translateY(15px);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
+/*==========================================
+SECTION TITLE
+==========================================*/
 
 .sectionTitle{
 
-animation:titleFade .6s ease;
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+    border-left:5px solid #00BCD4;
+
+    padding-left:12px;
+
+    letter-spacing:1px;
 
 }
 
-@keyframes titleFade{
+/*==========================================
+CARD GRID
+==========================================*/
 
-from{
+.cards{
 
-opacity:0;
+    display:grid;
 
-transform:translateX(-15px);
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 
-}
+    gap:12px;
 
-to{
+    flex:1;
 
-opacity:1;
-
-transform:translateX(0);
-
-}
+    align-content:start;
 
 }
 
-/*========================================
-PULSE STATUS
-========================================*/
-
-.status-green{
-
-animation:pulseGreen 2s infinite;
-
-}
-
-@keyframes pulseGreen{
-
-0%{
-
-box-shadow:0 0 0 rgba(0,255,0,.6);
-
-}
-
-50%{
-
-box-shadow:0 0 20px rgba(0,255,0,.8);
-
-}
-
-100%{
-
-box-shadow:0 0 0 rgba(0,255,0,.6);
-
-}
-
-}
-
-.status-red{
-
-animation:pulseRed 2s infinite;
-
-}
-
-@keyframes pulseRed{
-
-0%{
-
-box-shadow:0 0 0 rgba(255,0,0,.5);
-
-}
-
-50%{
-
-box-shadow:0 0 20px rgba(255,0,0,.8);
-
-}
-
-100%{
-
-box-shadow:0 0 0 rgba(255,0,0,.5);
-
-}
-
-}
-/*========================================
-55-INCH TV OPTIMIZATION
-========================================*/
-
-@media screen and (min-width:1920px){
-
-.dashboard{
-
-padding:15px;
-
-}
-
-header{
-
-height:100px;
-
-}
-
-.logo{
-
-height:82px;
-
-}
-
-.titleBox h1{
-
-font-size:48px;
-
-}
-
-.titleBox h2{
-
-font-size:22px;
-
-}
-
-.sectionTitle{
-
-font-size:28px;
-
-}
+/*==========================================
+CARDS
+==========================================*/
 
 .card{
 
-min-height:105px;
+    background:rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:16px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border-left:6px solid #29B6F6;
+
+    transition:.35s;
 
 }
 
-.card h1{
+.card:hover{
 
-font-size:40px;
+    transform:scale(1.03);
+
+    background:rgba(255,255,255,.12);
 
 }
+
+/*==========================================
+CARD TITLE
+==========================================*/
 
 .card h3{
 
-font-size:18px;
+    font-size:17px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+    color:#E3F2FD;
 
 }
+
+/*==========================================
+CARD VALUE
+==========================================*/
+
+.card h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    text-shadow:0 2px 8px rgba(0,0,0,.45);
+
+    margin-bottom:6px;
+
+}
+
+/*==========================================
+CARD UNIT
+==========================================*/
 
 .card p{
 
-font-size:15px;
+    font-size:14px;
+
+    color:#CFD8DC;
 
 }
 
-}
+/*==========================================
+STATUS COLORS
+==========================================*/
 
-/*========================================
-4K TV SUPPORT
-========================================*/
-
-@media screen and (min-width:2560px){
-
-.dashboard{
-
-zoom:1.25;
-
-}
-
-}
 .green{
 
-border-left:6px solid #00E676;
+    border-left:6px solid #00E676;
 
-box-shadow:0 0 15px rgba(0,230,118,.25);
+    box-shadow:0 0 16px rgba(0,230,118,.20);
 
 }
 
 .orange{
 
-border-left:6px solid #FFB300;
+    border-left:6px solid #FFB300;
 
-box-shadow:0 0 15px rgba(255,179,0,.25);
+    box-shadow:0 0 16px rgba(255,179,0,.20);
 
 }
 
 .red{
 
-border-left:6px solid #FF5252;
+    border-left:6px solid #FF5252;
 
-box-shadow:0 0 15px rgba(255,82,82,.25);
+    box-shadow:0 0 16px rgba(255,82,82,.20);
 
 }
 
 .blue{
 
-border-left:6px solid #29B6F6;
+    border-left:6px solid #29B6F6;
 
-box-shadow:0 0 15px rgba(41,182,246,.25);
+    box-shadow:0 0 16px rgba(41,182,246,.20);
 
 }
-/* Progress Bar */
+
+.yellow{
+
+    border-left:6px solid #FFD600;
+
+    box-shadow:0 0 16px rgba(255,214,0,.20);
+
+}
+
+/*==========================================
+PROGRESS BAR
+==========================================*/
 
 .progress{
 
-margin-top:12px;
+    margin-top:12px;
 
-width:100%;
+    width:100%;
 
-height:8px;
+    height:10px;
 
-background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 
-border-radius:10px;
+    border-radius:12px;
 
-overflow:hidden;
+    overflow:hidden;
 
 }
 
 .progressFill{
 
-height:100%;
+    height:100%;
 
-width:0;
+    width:0;
 
-background:linear-gradient(
+    border-radius:12px;
 
-90deg,
+    background:linear-gradient(
 
-#00BCD4,
+        90deg,
 
-#4CAF50
+        #00BCD4,
 
-);
+        #4CAF50
 
-transition:width .8s ease;
+    );
 
-}
-.card .progress{
-
-margin-top:12px;
-
-height:10px;
-
-background:rgba(255,255,255,.12);
-
-border-radius:12px;
-
-overflow:hidden;
+    transition:width .8s ease;
 
 }
+/*==========================================
+FOOTER
+==========================================*/
 
-.card .progressFill{
+footer{
 
-height:100%;
+    height:50px;
 
-transition:width .8s ease;
+    margin-top:10px;
 
-border-radius:12px;
+    padding:0 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#ECEFF1;
+
+}
+
+/*==========================================
+SCROLLBAR
+==========================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00BCD4;
+
+    border-radius:20px;
+
+}
+
+/*==========================================
+ANIMATIONS
+==========================================*/
+
+.card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.sectionTitle{
+
+    animation:slideLeft .7s ease;
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*==========================================
+STATUS PULSE
+==========================================*/
+
+.status-green{
+
+    animation:pulseGreen 2s infinite;
+
+}
+
+.status-red{
+
+    animation:pulseRed 2s infinite;
+
+}
+
+@keyframes pulseGreen{
+
+    0%{
+
+        box-shadow:0 0 0 rgba(0,230,118,.3);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 20px rgba(0,230,118,.7);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 rgba(0,230,118,.3);
+
+    }
+
+}
+
+@keyframes pulseRed{
+
+    0%{
+
+        box-shadow:0 0 0 rgba(255,82,82,.3);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 20px rgba(255,82,82,.7);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 rgba(255,82,82,.3);
+
+    }
+
+}
+
+/*==========================================
+WEATHER PANEL
+==========================================*/
+
+#weather{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+}
+
+#weather img{
+
+    width:40px;
+
+    height:40px;
+
+}
+
+#currentDate{
+
+    font-size:18px;
+
+    margin-top:5px;
+
+}
+
+#currentTime{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+/*==========================================
+TV OPTIMIZATION
+==========================================*/
+
+@media screen and (min-width:1920px){
+
+    .dashboard{
+
+        padding:15px;
+
+    }
+
+    header{
+
+        height:110px;
+
+    }
+
+    .titleBox h1{
+
+        font-size:48px;
+
+    }
+
+    .titleBox h2{
+
+        font-size:22px;
+
+    }
+
+    .sectionTitle{
+
+        font-size:26px;
+
+    }
+
+    .card h1{
+
+        font-size:46px;
+
+    }
+
+    .card h3{
+
+        font-size:18px;
+
+    }
+
+}
+
+@media screen and (min-width:2560px){
+
+    .dashboard{
+
+        zoom:1.25;
+
+    }
+
+}
+
+/*==========================================
+LOADING SPINNER
+==========================================*/
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#08131f;
+
+    z-index:9999;
+
+    color:white;
+
+    font-size:26px;
+
+    font-weight:bold;
 
 }
