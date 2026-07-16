@@ -475,3 +475,55 @@ transform:translateY(0);
 }
 
 }
+/*==========================
+V5 GRID LAYOUT
+==========================*/
+
+.mainGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+height:calc(100vh - 110px);
+}
+
+.leftColumn,
+.rightColumn{
+display:grid;
+grid-template-rows:1fr 1fr 1fr;
+gap:12px;
+}
+
+.fullWidth{
+grid-column:1 / span 2;
+min-height:140px;
+}
+
+.section{
+min-height:0;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.card{
+min-height:120px;
+}
+
+.card h1{
+font-size:42px;
+}
+
+.card h4{
+font-size:18px;
+}
+
+@media (max-width:1600px){
+
+.card h1{
+font-size:36px;
+}
+
+}
