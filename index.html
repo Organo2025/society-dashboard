@@ -4,174 +4,175 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>ORGANO OFM DASHBOARD</title>
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>
+
+ORGANO ANTHARAM
+
+</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="overlay"></div>
+<div id="backgroundOverlay"></div>
 
-<div class="container">
+<div class="dashboard">
 
-    <!-- HEADER -->
+<!-- =========================
+HEADER
+========================== -->
 
-    <header>
+<header>
 
-        <div class="logoBox">
-            <img src="assets/logo.png" id="logo">
-        </div>
+<div class="logoBox">
 
-        <div class="titleBox">
-
-            <h1>ORGANO ANTHARAM</h1>
-
-            <h2>Daily OFM Dashboard</h2>
-
-        </div>
-
-        <div class="infoBox">
-
-            <div id="weather">
-                ☀ Loading Weather...
-            </div>
-
-            <div id="currentDate">
-                📅 Loading Date...
-            </div>
-
-            <div id="currentTime">
-                🕒 Loading Time...
-            </div>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- ===================== -->
-
-    <div class="dashboardGrid">
-
-
-
-        <!-- ENERGY -->
-
-        <section class="panel">
-
-            <h2>⚡ ENERGY</h2>
-
-            <div id="energyCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- WATER -->
-
-        <section class="panel">
-
-            <h2>💧 WATER</h2>
-
-            <div id="waterCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- VISITORS -->
-
-        <section class="panel">
-
-            <h2>👥 VISITORS</h2>
-
-            <div id="visitorCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- SECURITY -->
-
-        <section class="panel">
-
-            <h2>🚓 SECURITY ROUNDS</h2>
-
-            <div id="securityCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- CCTV -->
-
-        <section class="panel">
-
-            <h2>📷 CCTV STATUS</h2>
-
-            <div id="cctvCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- DG -->
-
-        <section class="panel">
-
-            <h2>🛢 DIESEL GENERATORS</h2>
-
-            <div id="dgCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- BOOKINGS -->
-
-        <section class="panel">
-
-            <h2>🏠 AMENITIES BOOKINGS</h2>
-
-            <div id="amenityCards" class="cards"></div>
-
-        </section>
-
-
-
-        <!-- REMARKS -->
-
-        <section class="panel remarksPanel">
-
-            <h2>📝 REMARKS</h2>
-
-            <div id="remarkCards"></div>
-
-        </section>
-
-
-
-    </div>
+<img src="assets/logo.png"
+class="logo">
 
 </div>
 
+<div class="titleBox">
 
+<h1>
 
-<footer>
+ORGANO ANTHARAM
 
-Organo Eco Habitats Pvt Ltd
+</h1>
 
-</footer>
+<h2>
 
+Daily OFM Dashboard
 
+</h2>
 
-<script src="script.js"></script>
+<div id="lastUpdated">
 
-</body>
+Last Updated :
+Loading...
 
-</html>
+</div>
+
+</div>
+
+<div class="rightBox">
+
+<div id="weather">
+
+Loading Weather...
+
+</div>
+
+<div id="currentDate">
+
+📅 Loading Date...
+
+</div>
+
+<div id="currentTime">
+
+🕒 Loading Time...
+
+</div>
+
+</div>
+
+</header>
+
+<!-- =========================
+CONTENT
+========================== -->
+
+<main>
+
+<!-- =========================
+ENERGY
+========================== -->
+
+<section>
+
+<div class="sectionTitle">
+
+⚡ ENERGY
+
+</div>
+
+<div
+id="energyCards"
+class="cards">
+
+</div>
+
+</section>
+
+<!-- =========================
+WATER
+========================== -->
+
+<section>
+
+<div class="sectionTitle">
+
+💧 WATER
+
+</div>
+
+<div
+id="waterCards"
+class="cards">
+
+</div>
+
+</section>
+
+<!-- =========================
+VISITORS
+========================== -->
+
+<section>
+
+<div class="sectionTitle">
+
+👥 VISITORS
+
+</div>
+
+<div
+id="visitorCards"
+class="cards">
+
+</div>
+
+</section>
+
+<!-- =========================
+CCTV
+========================== -->
+
+<section>
+
+<div class="sectionTitle">
+
+📷 CCTV STATUS
+
+</div>
+
+<div
+id="cctvCards"
+class="cards">
+
+</div>
+
+</section>
