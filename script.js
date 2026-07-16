@@ -619,3 +619,51 @@ background:${color};">
 
 }
 
+// =========================================
+// ANIMATE NUMBERS
+// =========================================
+
+function animateValue(element,start,end,duration){
+
+    let startTime=null;
+
+    function animation(currentTime){
+
+        if(!startTime) startTime=currentTime;
+
+        const progress=Math.min((currentTime-startTime)/duration,1);
+
+        element.innerHTML=Math.floor(progress*(end-start)+start);
+
+        if(progress<1){
+
+            requestAnimationFrame(animation);
+
+        }
+
+    }
+
+    requestAnimationFrame(animation);
+
+}
+// =========================================
+// DASHBOARD INITIALIZATION
+// =========================================
+
+// Start Live Clock
+updateClock();
+
+// Load Dashboard Data
+loadDashboard();
+
+// Load Weather
+loadWeather();
+
+// Update Clock Every Second
+setInterval(updateClock, 1000);
+
+// Refresh Dashboard Every Minute
+setInterval(loadDashboard, 60000);
+
+// Refresh Weather Every 10 Minutes
+setInterval(loadWeather, 600000);
