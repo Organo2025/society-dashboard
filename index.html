@@ -5,19 +5,11 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ORGANO ANTHARAM OFM Dashboard</title>
+<title>ORGANO OFM DASHBOARD</title>
 
-<link rel="stylesheet"
-href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -27,28 +19,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <div class="dashboard">
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
 <div class="logo">
-
-<img src="assets/logo.png">
-
+<img src="assets/logo.png" alt="Organo">
 </div>
 
 <div class="title">
-
 <h1>ORGANO ANTHARAM</h1>
-
-<h2>Daily OFM Dashboard</h2>
-
+<p>Daily OFM Dashboard</p>
 </div>
 
 <div class="headerRight">
 
 <div id="weather">
-
 Loading Weather...
-
 </div>
 
 <div id="currentDate"></div>
@@ -59,65 +46,94 @@ Loading Weather...
 
 </header>
 
-<main>
+<!-- ================= MAIN GRID ================= -->
 
-<section>
+<div class="mainGrid">
 
-<h3>⚡ ENERGY</h3>
+<!-- LEFT COLUMN -->
 
-<div id="energyCards" class="cards"></div>
+<div class="leftColumn">
 
-</section>
+<!-- ENERGY -->
 
-<section>
+<section class="section energy">
 
-<h3>💧 WATER</h3>
+<h2>⚡ ENERGY</h2>
 
-<div id="waterCards" class="cards"></div>
-
-</section>
-
-<section>
-
-<h3>👥 VISITORS</h3>
-
-<div id="visitorCards" class="cards"></div>
+<div class="cards" id="energyCards"></div>
 
 </section>
 
-<section>
+<!-- VISITORS -->
 
-<h3>📷 CCTV STATUS</h3>
+<section class="section visitors">
 
-<div id="cctvCards" class="cards"></div>
+<h2>👥 VISITORS</h2>
 
-</section>
-
-<section>
-
-<h3>⛽ DIESEL GENERATORS</h3>
-
-<div id="dgCards" class="cards"></div>
+<div class="cards" id="visitorCards"></div>
 
 </section>
 
-<section>
+<!-- DG -->
 
-<h3>🏠 AMENITIES</h3>
+<section class="section dg">
 
-<div id="amenityCards" class="cards"></div>
+<h2>⛽ DIESEL GENERATORS</h2>
 
-</section>
-
-<section>
-
-<h3>🌍 AIR QUALITY</h3>
-
-<div id="airCards" class="cards"></div>
+<div class="cards" id="dgCards"></div>
 
 </section>
 
-</main>
+</div>
+
+<!-- RIGHT COLUMN -->
+
+<div class="rightColumn">
+
+<!-- WATER -->
+
+<section class="section water">
+
+<h2>💧 WATER</h2>
+
+<div class="cards" id="waterCards"></div>
+
+</section>
+
+<!-- CCTV -->
+
+<section class="section cctv">
+
+<h2>📷 CCTV STATUS</h2>
+
+<div class="cards" id="cctvCards"></div>
+
+</section>
+
+<!-- AMENITIES -->
+
+<section class="section amenities">
+
+<h2>🏠 AMENITIES</h2>
+
+<div class="cards" id="amenityCards"></div>
+
+</section>
+
+</div>
+<!-- ================= AIR QUALITY ================= -->
+
+<section class="section air fullWidth">
+
+<h2>🌍 AIR QUALITY</h2>
+
+<div class="cards" id="airCards"></div>
+
+</section>
+
+</div>
+
+</div>
 
 <footer>
 
@@ -125,10 +141,8 @@ Organo Eco Habitats Pvt Ltd
 
 </footer>
 
-</div>
+</body>
 
 <script src="script.js"></script>
-
-</body>
 
 </html>
