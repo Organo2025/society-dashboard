@@ -12,7 +12,7 @@ const API_URL="https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NF
 // WEATHER API
 //============================
 
-const WEATHER_KEY="8827779504663578c215e060dc823501";
+const WEATHER_KEY="c09b61b39ee9308f837366dcb8345d08";
 
 //============================
 
