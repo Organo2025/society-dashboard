@@ -1,295 +1,750 @@
+/*==================================================
+ORGANO OFM DASHBOARD V3
+Designed for 55" TV
+===================================================*/
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
+
+html,
+body{
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+background:#08131f;
+
+color:#ffffff;
+
+}
+
+/*=============================
+BACKGROUND
+=============================*/
 
 body{
 
-    background:url("assets/background.jpg") center center/cover no-repeat fixed;
-    color:#fff;
-    overflow:hidden;
+background-image:url("assets/background.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+background-attachment:fixed;
+
 }
 
-/* Dark transparent overlay */
+#backgroundOverlay{
 
-.overlay{
+position:fixed;
 
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.28);
-    backdrop-filter:blur(2px);
-    z-index:-1;
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+rgba(0,0,0,.25),
+
+rgba(0,0,0,.45)
+
+);
+
+backdrop-filter:blur(2px);
+
+z-index:-1;
+
 }
 
-/* Main Container */
+/*=============================
+MAIN DASHBOARD
+=============================*/
 
-.container{
+.dashboard{
 
-    width:100vw;
-    height:100vh;
+width:100vw;
 
-    padding:15px 20px;
+height:100vh;
 
-    display:flex;
-    flex-direction:column;
+padding:12px;
+
+display:flex;
+
+flex-direction:column;
+
 }
 
-/* HEADER */
+/*=============================
+HEADER
+=============================*/
 
 header{
 
-    display:grid;
+height:90px;
 
-    grid-template-columns:240px 1fr 260px;
+display:grid;
 
-    align-items:center;
+grid-template-columns:
 
-    margin-bottom:12px;
+240px
+
+1fr
+
+280px;
+
+align-items:center;
+
+margin-bottom:10px;
+
 }
 
-#logo{
+/*=============================
+LOGO
+=============================*/
 
-    width:220px;
+.logo{
+
+height:72px;
+
+object-fit:contain;
+
 }
+
+/*=============================
+TITLE
+=============================*/
 
 .titleBox{
 
-    text-align:center;
+text-align:center;
+
 }
 
 .titleBox h1{
 
-    font-size:44px;
+font-size:42px;
 
-    letter-spacing:3px;
+font-weight:700;
 
-    font-weight:bold;
+letter-spacing:3px;
+
 }
 
 .titleBox h2{
 
-    margin-top:6px;
+margin-top:6px;
 
-    font-weight:400;
+font-size:18px;
 
-    font-size:22px;
+font-weight:300;
 
-    color:#ddd;
+color:#ddd;
+
 }
 
-.infoBox{
+#lastUpdated{
 
-    text-align:right;
+margin-top:8px;
 
-    font-size:28px;
+font-size:15px;
 
-    font-weight:bold;
+color:#90caf9;
 
-    line-height:1.6;
 }
 
-#weather{
+/*=============================
+RIGHT INFO
+=============================*/
 
-    color:#ffd54f;
+.rightBox{
+
+text-align:right;
+
 }
 
-/* GRID */
+.rightBox div{
 
-.dashboardGrid{
+margin:5px 0;
 
-    flex:1;
+font-size:19px;
 
-    display:grid;
+font-weight:600;
 
-    grid-template-columns:repeat(2,1fr);
-
-    grid-template-rows:repeat(4,1fr);
-
-    gap:15px;
 }
 
-/* PANEL */
+/*=============================
+GRID
+=============================*/
 
-.panel{
+main{
 
-    background:rgba(0,0,0,.30);
+flex:1;
 
-    backdrop-filter:blur(8px);
+display:grid;
 
-    border-radius:22px;
+grid-template-columns:
 
-    padding:16px;
+1fr 1fr;
 
-    box-shadow:
+grid-template-rows:
 
-    0 8px 25px rgba(0,0,0,.35);
+repeat(4,1fr);
 
-    display:flex;
+gap:12px;
 
-    flex-direction:column;
+}
+/*=============================
+PANELS
+=============================*/
+
+section{
+
+background:rgba(20,30,45,.35);
+
+backdrop-filter:blur(15px);
+
+-webkit-backdrop-filter:blur(15px);
+
+border-radius:22px;
+
+padding:14px;
+
+display:flex;
+
+flex-direction:column;
+
+box-shadow:
+
+0 8px 30px rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.08);
+
+overflow:hidden;
+
+transition:.35s;
+
 }
 
-.panel h2{
+section:hover{
 
-    font-size:28px;
+transform:translateY(-3px);
 
-    margin-bottom:15px;
+box-shadow:
 
-    border-left:6px solid cyan;
+0 12px 35px rgba(0,0,0,.45);
 
-    padding-left:12px;
 }
 
-/* Cards */
+/*=============================
+SECTION TITLE
+=============================*/
+
+.sectionTitle{
+
+font-size:26px;
+
+font-weight:700;
+
+margin-bottom:12px;
+
+padding-left:12px;
+
+border-left:5px solid #00d4ff;
+
+letter-spacing:1px;
+
+}
+
+/*=============================
+CARD GRID
+=============================*/
 
 .cards{
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+grid-template-columns:repeat(2,1fr);
 
-    gap:15px;
+gap:12px;
 
-    flex:1;
+flex:1;
+
+align-content:start;
+
 }
+
+/*=============================
+CARD
+=============================*/
 
 .card{
 
-    background:rgba(255,255,255,.12);
+background:rgba(255,255,255,.08);
 
-    border-radius:18px;
+backdrop-filter:blur(12px);
 
-    padding:16px;
+border-radius:16px;
 
-    backdrop-filter:blur(10px);
+padding:14px;
 
-    transition:.35s;
+display:flex;
 
-    box-shadow:0 8px 18px rgba(0,0,0,.35);
+flex-direction:column;
+
+justify-content:center;
+
+min-height:92px;
+
+transition:.3s;
+
+border-left:5px solid #2196f3;
+
 }
 
 .card:hover{
 
-    transform:translateY(-5px);
+background:rgba(255,255,255,.12);
 
-    background:rgba(255,255,255,.18);
+transform:scale(1.02);
+
 }
+
+/*=============================
+CARD TITLE
+=============================*/
 
 .card h3{
 
-    font-size:22px;
+font-size:16px;
 
-    margin-bottom:8px;
+font-weight:600;
 
-    color:#fff;
+margin-bottom:8px;
+
+color:#f5f5f5;
+
 }
+
+/*=============================
+CARD VALUE
+=============================*/
 
 .card h1{
 
-    font-size:54px;
+font-size:34px;
 
-    color:#fff;
+font-weight:700;
 
-    margin-bottom:8px;
+line-height:1;
+
+margin-bottom:6px;
+
+color:#ffffff;
+
 }
+
+/*=============================
+CARD UNIT
+=============================*/
 
 .card p{
 
-    font-size:22px;
+font-size:14px;
 
-    color:#ddd;
+color:#d5d5d5;
+
 }
 
-/* Color Borders */
-
-.orange{
-
-    border-top:5px solid orange;
-}
-
-.blue{
-
-    border-top:5px solid dodgerblue;
-}
+/*=============================
+STATUS COLORS
+=============================*/
 
 .green{
 
-    border-top:5px solid limegreen;
+border-left-color:#4CAF50;
+
+}
+
+.orange{
+
+border-left-color:#FF9800;
+
 }
 
 .red{
 
-    border-top:5px solid red;
+border-left-color:#F44336;
+
 }
 
-/* Remarks */
+.blue{
 
-.remarksPanel{
+border-left-color:#03A9F4;
 
-    overflow:hidden;
 }
 
-#remarkCards{
+.yellow{
 
-    flex:1;
+border-left-color:#FFD600;
 
-    font-size:24px;
-
-    line-height:1.6;
-
-    background:rgba(255,255,255,.08);
-
-    padding:20px;
-
-    border-radius:16px;
 }
 
-/* Footer */
+/*=============================
+AIR QUALITY
+=============================*/
+
+.good{
+
+color:#00E676;
+
+font-weight:bold;
+
+}
+
+.moderate{
+
+color:#FFD600;
+
+font-weight:bold;
+
+}
+
+.poor{
+
+color:#FF5252;
+
+font-weight:bold;
+
+}
+/*========================================
+WEATHER CARD
+========================================*/
+
+#weather{
+
+display:flex;
+
+align-items:center;
+
+justify-content:flex-end;
+
+gap:10px;
+
+font-size:20px;
+
+font-weight:600;
+
+color:#FFD54F;
+
+}
+
+#weather img{
+
+width:34px;
+
+height:34px;
+
+}
+
+/*========================================
+DATE & TIME
+========================================*/
+
+#currentDate{
+
+font-size:18px;
+
+font-weight:500;
+
+margin-top:6px;
+
+color:#E3F2FD;
+
+}
+
+#currentTime{
+
+font-size:22px;
+
+font-weight:700;
+
+margin-top:5px;
+
+color:#FFFFFF;
+
+letter-spacing:1px;
+
+}
+
+/*========================================
+LAST UPDATED
+========================================*/
+
+#lastUpdated{
+
+font-size:15px;
+
+color:#81D4FA;
+
+margin-top:6px;
+
+}
+
+/*========================================
+FOOTER
+========================================*/
 
 footer{
 
-    position:fixed;
+height:40px;
 
-    bottom:8px;
+margin-top:10px;
 
-    left:0;
+padding:0 20px;
 
-    width:100%;
+display:flex;
 
-    text-align:center;
+justify-content:space-between;
 
-    font-size:20px;
+align-items:center;
 
-    color:#fff;
+background:rgba(0,0,0,.35);
 
-    text-shadow:0 0 8px #000;
+backdrop-filter:blur(10px);
+
+border-radius:12px;
+
+font-size:15px;
+
+color:#ECEFF1;
+
 }
 
-/* Animation */
+/*========================================
+SCROLLBAR
+========================================*/
+
+::-webkit-scrollbar{
+
+width:6px;
+
+height:6px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#00BCD4;
+
+border-radius:10px;
+
+}
+
+/*========================================
+ANIMATIONS
+========================================*/
 
 .card{
 
-    animation:fadeUp .5s ease;
+animation:cardFade .5s ease;
+
 }
 
-@keyframes fadeUp{
+@keyframes cardFade{
 
-    from{
+0%{
 
-        opacity:0;
+opacity:0;
 
-        transform:translateY(25px);
+transform:translateY(15px);
 
-    }
+}
 
-    to{
+100%{
 
-        opacity:1;
+opacity:1;
 
-        transform:translateY(0);
+transform:translateY(0);
 
-    }
+}
+
+}
+
+.sectionTitle{
+
+animation:titleFade .6s ease;
+
+}
+
+@keyframes titleFade{
+
+from{
+
+opacity:0;
+
+transform:translateX(-15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+/*========================================
+PULSE STATUS
+========================================*/
+
+.status-green{
+
+animation:pulseGreen 2s infinite;
+
+}
+
+@keyframes pulseGreen{
+
+0%{
+
+box-shadow:0 0 0 rgba(0,255,0,.6);
+
+}
+
+50%{
+
+box-shadow:0 0 20px rgba(0,255,0,.8);
+
+}
+
+100%{
+
+box-shadow:0 0 0 rgba(0,255,0,.6);
+
+}
+
+}
+
+.status-red{
+
+animation:pulseRed 2s infinite;
+
+}
+
+@keyframes pulseRed{
+
+0%{
+
+box-shadow:0 0 0 rgba(255,0,0,.5);
+
+}
+
+50%{
+
+box-shadow:0 0 20px rgba(255,0,0,.8);
+
+}
+
+100%{
+
+box-shadow:0 0 0 rgba(255,0,0,.5);
+
+}
+
+}
+/*========================================
+55-INCH TV OPTIMIZATION
+========================================*/
+
+@media screen and (min-width:1920px){
+
+.dashboard{
+
+padding:15px;
+
+}
+
+header{
+
+height:100px;
+
+}
+
+.logo{
+
+height:82px;
+
+}
+
+.titleBox h1{
+
+font-size:48px;
+
+}
+
+.titleBox h2{
+
+font-size:22px;
+
+}
+
+.sectionTitle{
+
+font-size:28px;
+
+}
+
+.card{
+
+min-height:105px;
+
+}
+
+.card h1{
+
+font-size:40px;
+
+}
+
+.card h3{
+
+font-size:18px;
+
+}
+
+.card p{
+
+font-size:15px;
+
+}
+
+}
+
+/*========================================
+4K TV SUPPORT
+========================================*/
+
+@media screen and (min-width:2560px){
+
+.dashboard{
+
+zoom:1.25;
+
+}
 
 }
