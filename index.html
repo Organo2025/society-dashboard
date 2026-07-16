@@ -4,13 +4,17 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ORGANO ANTHARAM Dashboard</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>ORGANO ANTHARAM OFM Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -19,33 +23,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <body>
 
-<div id="backgroundOverlay"></div>
+<div class="overlay"></div>
 
 <div class="dashboard">
 
 <header>
 
-<div class="logoBox">
+<div class="logo">
 
-<img src="assets/logo.png" class="logo">
+<img src="assets/logo.png">
 
 </div>
 
-<div class="titleBox">
+<div class="title">
 
 <h1>ORGANO ANTHARAM</h1>
 
 <h2>Daily OFM Dashboard</h2>
 
-<div id="lastUpdated">
-
-Last Updated : Loading...
-
 </div>
 
-</div>
-
-<div class="rightBox">
+<div class="headerRight">
 
 <div id="weather">
 
@@ -53,17 +51,9 @@ Loading Weather...
 
 </div>
 
-<div id="currentDate">
+<div id="currentDate"></div>
 
-📅 Loading Date...
-
-</div>
-
-<div id="currentTime">
-
-🕒 Loading Time...
-
-</div>
+<div id="currentTime"></div>
 
 </div>
 
@@ -71,115 +61,59 @@ Loading Weather...
 
 <main>
 
-<!-- ENERGY -->
-
 <section>
 
-<div class="sectionTitle">
-
-⚡ ENERGY
-
-</div>
+<h3>⚡ ENERGY</h3>
 
 <div id="energyCards" class="cards"></div>
 
 </section>
 
-<!-- WATER -->
-
 <section>
 
-<div class="sectionTitle">
-
-💧 WATER
-
-</div>
+<h3>💧 WATER</h3>
 
 <div id="waterCards" class="cards"></div>
 
 </section>
 
-<!-- VISITORS -->
-
 <section>
 
-<div class="sectionTitle">
-
-👥 VISITORS
-
-</div>
+<h3>👥 VISITORS</h3>
 
 <div id="visitorCards" class="cards"></div>
 
 </section>
 
-<!-- CCTV -->
-
 <section>
 
-<div class="sectionTitle">
-
-📷 CCTV STATUS
-
-</div>
+<h3>📷 CCTV STATUS</h3>
 
 <div id="cctvCards" class="cards"></div>
 
 </section>
 
-<!-- DG -->
-
 <section>
 
-<div class="sectionTitle">
-
-⛽ DIESEL GENERATORS
-
-</div>
+<h3>⛽ DIESEL GENERATORS</h3>
 
 <div id="dgCards" class="cards"></div>
 
 </section>
 
-<!-- AMENITIES -->
-
 <section>
 
-<div class="sectionTitle">
-
-🏠 AMENITIES BOOKINGS
-
-</div>
+<h3>🏠 AMENITIES</h3>
 
 <div id="amenityCards" class="cards"></div>
 
 </section>
 
-<!-- AIR QUALITY -->
-
 <section>
 
-<div class="sectionTitle">
-
-🌍 AIR QUALITY
-
-</div>
+<h3>🌍 AIR QUALITY</h3>
 
 <div id="airCards" class="cards"></div>
-
-</section>
-
-<!-- WEATHER -->
-
-<section>
-
-<div class="sectionTitle">
-
-🌤 WEATHER
-
-</div>
-
-<div id="weatherCards" class="cards"></div>
 
 </section>
 
@@ -187,17 +121,7 @@ Loading Weather...
 
 <footer>
 
-<div>
-
 Organo Eco Habitats Pvt Ltd
-
-</div>
-
-<div>
-
-Dashboard Version 3.0
-
-</div>
 
 </footer>
 
