@@ -816,3 +816,26 @@ background:linear-gradient(
 transition:width .8s ease;
 
 }
+.card .progress{
+
+margin-top:12px;
+
+height:10px;
+
+background:rgba(255,255,255,.12);
+
+border-radius:12px;
+
+overflow:hidden;
+
+}
+
+.card .progressFill{
+
+height:100%;
+
+transition:width .8s ease;
+
+border-radius:12px;
+
+}
