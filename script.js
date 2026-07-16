@@ -1,18 +1,26 @@
 // =====================================================
-// ORGANO OFM DASHBOARD V3
+// ORGANO OFM DASHBOARD V3.1
 // =====================================================
 
-// Google Apps Script URL
-const API_URL = "https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
+// -----------------------------
+// Google Apps Script API
+// -----------------------------
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
 
+// -----------------------------
 // OpenWeather API
-const WEATHER_API_KEY = "c09b61b39ee9308f837366dcb8345d08";
+// -----------------------------
+const WEATHER_API_KEY =
+"c09b61b39ee9308f837366dcb8345d08";
 
-// Antharam Coordinates
+// Antharam Location
 const LAT = 17.3050;
 const LON = 78.2180;
 
+// -----------------------------
 // Dashboard Containers
+// -----------------------------
 const sections = {
 
     energy: document.getElementById("energyCards"),
@@ -33,7 +41,9 @@ const sections = {
 
 };
 
+// -----------------------------
 // Clear Dashboard
+// -----------------------------
 function clearDashboard(){
 
     Object.values(sections).forEach(section=>{
@@ -48,18 +58,101 @@ function clearDashboard(){
 
 }
 
-// Create Card
-function createCard(title,value,unit,color="blue"){
+// -----------------------------
+// Status Color Engine
+// -----------------------------
+function getStatusColor(metric,value){
 
-    const numeric = Number(value);
+    metric = metric.toLowerCase();
 
-    let percent = 0;
+    value = Number(value);
 
-    if(!isNaN(numeric)){
+    // ENERGY
 
-        percent = Math.min(100,Math.max(0,numeric));
+    if(metric.includes("grid energy")){
+
+        if(value < 200) return "green";
+
+        if(value < 350) return "orange";
+
+        return "red";
 
     }
+
+    if(metric.includes("solar")){
+
+        if(value > 700) return "green";
+
+        if(value > 400) return "orange";
+
+        return "red";
+
+    }
+
+    // WATER
+
+    if(metric.includes("well") || metric.includes("stp")){
+
+        if(value >= 80) return "green";
+
+        if(value >= 50) return "orange";
+
+        return "red";
+
+    }
+
+    // CCTV
+
+    if(metric.includes("working")){
+
+        if(value >= 70) return "green";
+
+        if(value >= 50) return "orange";
+
+        return "red";
+
+    }
+
+    if(metric.includes("not")){
+
+        if(value <= 5) return "green";
+
+        if(value <= 15) return "orange";
+
+        return "red";
+
+    }
+
+    // DG
+
+    if(metric.includes("diesel")){
+
+        if(value >= 20) return "green";
+
+        if(value >= 10) return "orange";
+
+        return "red";
+
+    }
+
+    return "blue";
+
+}
+
+// -----------------------------
+// Create Card
+// -----------------------------
+function createCard(title,value,unit,color){
+
+    let percent = Number(value);
+
+    if(isNaN(percent)){
+
+        percent = 0;
+
+    }
+
+    percent = Math.max(0,Math.min(percent,100));
 
     return `
 
@@ -86,8 +179,33 @@ style="width:${percent}%">
 `;
 
 }
+
+// -----------------------------
+// Air Quality Card
+// -----------------------------
+function createAirCard(location){
+
+    return `
+
+<div class="card green">
+
+<h3>🌍 AIR QUALITY</h3>
+
+<h2>${location}</h2>
+
+<p>
+
+Live PM2.5 will be added later
+
+</p>
+
+</div>
+
+`;
+
+}
 // =====================================================
-// LOAD DASHBOARD DATA
+// LOAD DASHBOARD
 // =====================================================
 
 async function loadDashboard(){
@@ -100,32 +218,32 @@ async function loadDashboard(){
 
         const data = await response.json();
 
+        let airLocation = "";
+
         // Update Date
-        const dateItem = data.find(x => x.metric === "Date");
-
-        if(dateItem){
-
-            document.getElementById("currentDate").innerHTML =
-            "📅 " + dateItem.value;
-
-        }
-
-        // Process every metric
         data.forEach(item=>{
 
-            if(item.metric==="Date") return;
+            if(item.metric==="Date"){
+
+                document.getElementById("currentDate").innerHTML =
+                "📅 " + item.value;
+
+            }
+
+        });
+
+        // Process Metrics
+        data.forEach(item=>{
 
             const metric = item.metric.trim().toLowerCase();
 
-            // ---------------- ENERGY ----------------
+            if(metric==="date") return;
 
-            if(
+            // ================= ENERGY =================
 
-                metric.includes("grid energy") ||
+            if(metric.includes("grid energy") ||
 
-                metric.includes("solar")
-
-            ){
+               metric.includes("solar")){
 
                 sections.energy.innerHTML +=
 
@@ -137,13 +255,13 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    getStatusColor(item.metric,item.value)
 
                 );
 
             }
 
-            // ---------------- WATER ----------------
+            // ================= WATER =================
 
             else if(
 
@@ -163,13 +281,13 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    getStatusColor(item.metric,item.value)
 
                 );
 
             }
 
-            // ---------------- VISITORS ----------------
+            // ================= VISITORS =================
 
             else if(
 
@@ -189,13 +307,13 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    "green"
 
                 );
 
             }
 
-            // ---------------- CCTV ----------------
+            // ================= CCTV =================
 
             else if(
 
@@ -213,13 +331,13 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    getStatusColor(item.metric,item.value)
 
                 );
 
             }
 
-            // ---------------- DG ----------------
+            // ================= DG =================
 
             else if(
 
@@ -239,12 +357,13 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    getStatusColor(item.metric,item.value)
 
                 );
 
             }
-                        // ---------------- AMENITIES ----------------
+
+            // ================= AMENITIES =================
 
             else if(
 
@@ -264,68 +383,53 @@ async function loadDashboard(){
 
                     item.unit,
 
-                    "getStatusColor(item.metric, item.value)"
+                    "blue"
 
                 );
 
             }
 
-            // ---------------- AIR QUALITY ----------------
+            // ================= AIR QUALITY =================
 
             else if(
 
-metric.includes("location")
+                metric.includes("location")
 
-){
+            ){
 
-    window.airLocation = item.value;
+                airLocation = item.value;
 
-}
-
-else if(
-
-metric.includes("pm")
-
-){
-
-    window.pmValue = item.value;
-
-}
-
-else if(
-
-metric.includes("air pollution")
-
-){
-
-    // Nothing here—status will be calculated from PM2.5
-
-}
+            }
 
         });
-if(window.airLocation && window.pmValue){
 
-    sections.air.innerHTML =
-    createAirCard(
+        // Create Air Quality Card
 
-        window.airLocation,
+        if(airLocation !== ""){
 
-        window.pmValue
+            sections.air.innerHTML =
 
-    );
+            createAirCard(
 
-}
-        // Update footer time
-        const now = new Date();
+                airLocation
+
+            );
+
+        }
+
+        // Last Updated
 
         document.getElementById("lastUpdated").innerHTML =
-        "Last Updated : " + now.toLocaleTimeString();
+
+        "Last Updated : " +
+
+        new Date().toLocaleTimeString();
 
     }
 
     catch(err){
 
-        console.error("Dashboard Error :", err);
+        console.log(err);
 
     }
 
@@ -339,331 +443,208 @@ function updateClock(){
     const now = new Date();
 
     document.getElementById("currentTime").innerHTML =
-        "🕒 " +
-        now.toLocaleTimeString();
+    "🕒 " +
+    now.toLocaleTimeString("en-IN");
 
 }
 
-setInterval(updateClock,1000);
-
-updateClock();
 // =====================================================
-// AUTO REFRESH
-// =====================================================
-
-loadDashboard();
-
-setInterval(loadDashboard,60000);
-// =====================================================
-// WEATHER ENGINE
+// WEATHER
 // =====================================================
 
 async function loadWeather(){
 
-    if(WEATHER_API_KEY==""){
-
-        document.getElementById("weather").innerHTML =
-        "🌤 Weather API Missing";
-
-        return;
-
-    }
-
     try{
 
-        const url =
-        `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&units=metric&appid=${WEATHER_API_KEY}`;
+        const response = await fetch(
 
-        const response = await fetch(url);
+`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&units=metric&appid=${WEATHER_API_KEY}`
+
+        );
 
         const weather = await response.json();
 
         const temp = Math.round(weather.main.temp);
 
-        const feels = Math.round(weather.main.feels_like);
-
         const humidity = weather.main.humidity;
 
         const wind = weather.wind.speed;
 
-        const description = weather.weather[0].description;
+        const feels = Math.round(weather.main.feels_like);
 
         const icon = weather.weather[0].icon;
 
-        const sunrise = weather.sys.sunrise * 1000;
+        const desc = weather.weather[0].main;
 
-        const sunset = weather.sys.sunset * 1000;
+        document.getElementById("weather").innerHTML =
 
-        const now = Date.now();
+        `
 
-        // Automatic Day / Night Background
+<img src="https://openweathermap.org/img/wn/${icon}@2x.png"
+style="width:40px">
 
-        if(now > sunrise && now < sunset){
+<div>
 
-            document.body.style.backgroundImage =
+<b>${temp}°C</b>
+
+<br>
+
+${desc}
+
+</div>
+
+`;
+
+        sections.weather.innerHTML =
+
+        createCard(
+
+            "Temperature",
+
+            temp,
+
+            "°C",
+
+            "orange"
+
+        );
+
+        sections.weather.innerHTML +=
+
+        createCard(
+
+            "Humidity",
+
+            humidity,
+
+            "%",
+
+            "blue"
+
+        );
+
+        sections.weather.innerHTML +=
+
+        createCard(
+
+            "Wind",
+
+            wind,
+
+            "m/s",
+
+            "green"
+
+        );
+
+        sections.weather.innerHTML +=
+
+        createCard(
+
+            "Feels Like",
+
+            feels,
+
+            "°C",
+
+            "yellow"
+
+        );
+
+        // Automatic Background
+
+        const hour = new Date().getHours();
+
+        if(hour>=6 && hour<18){
+
+            document.body.style.backgroundImage=
             "url('assets/background_day.jpg')";
 
         }
 
         else{
 
-            document.body.style.backgroundImage =
+            document.body.style.backgroundImage=
             "url('assets/background_night.jpg')";
 
         }
-
-        document.getElementById("weather").innerHTML =
-
-        `
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
-
-        <div>
-
-        <b>${temp}°C</b>
-
-        <br>
-
-        ${description}
-
-        <br>
-
-        💧 ${humidity}%
-
-        &nbsp;
-
-        💨 ${wind} m/s
-
-        <br>
-
-        Feels Like ${feels}°C
-
-        </div>
-
-        `;
 
     }
 
     catch(err){
 
+        document.getElementById("weather").innerHTML="Weather Offline";
+
         console.log(err);
 
-        document.getElementById("weather").innerHTML =
-        "⚠ Weather Offline";
-
     }
 
 }
-loadDashboard();
 
-setInterval(loadDashboard,60000);
-loadWeather();
+// =====================================================
+// CCTV HEALTH
+// =====================================================
+
+function updateCCTVHealth(){
+
+    const cards=document.querySelectorAll("#cctvCards .card h1");
+
+    if(cards.length<2) return;
+
+    const working=Number(cards[0].innerText);
+
+    const down=Number(cards[1].innerText);
+
+    const total=working+down;
+
+    if(total==0) return;
+
+    const health=Math.round((working/total)*100);
+
+    sections.cctv.innerHTML+=
+
+    createCard(
+
+        "Health",
+
+        health,
+
+        "%",
+
+        health>90?"green":
+
+        health>75?"orange":"red"
+
+    );
+
+}
+
+// =====================================================
+// INITIALIZATION
+// =====================================================
+
+async function initializeDashboard(){
+
+    updateClock();
+
+    await loadDashboard();
+
+    await loadWeather();
+
+    updateCCTVHealth();
+
+}
+
+initializeDashboard();
+
+setInterval(updateClock,1000);
+
+setInterval(async()=>{
+
+    await loadDashboard();
+
+    updateCCTVHealth();
+
+},60000);
 
 setInterval(loadWeather,600000);
-// =====================================================
-// STATUS COLOR ENGINE
-// =====================================================
-
-function getStatusColor(metric, value){
-
-    const name = metric.toLowerCase();
-
-    const val = Number(value);
-
-    // ---------------- ENERGY ----------------
-
-    if(name.includes("grid energy")){
-
-        if(val < 200) return "green";
-        if(val < 350) return "orange";
-        return "red";
-
-    }
-
-    if(name.includes("solar")){
-
-        if(val > 700) return "green";
-        if(val > 400) return "orange";
-        return "red";
-
-    }
-
-    // ---------------- WATER ----------------
-
-    if(name.includes("dug well") || name.includes("stp")){
-
-        if(val >= 80) return "green";
-        if(val >= 50) return "orange";
-        return "red";
-
-    }
-
-    // ---------------- DG ----------------
-
-    if(name.includes("diesel")){
-
-        if(val >= 20) return "green";
-        if(val >= 10) return "orange";
-        return "red";
-
-    }
-
-    // ---------------- CCTV ----------------
-
-    if(name.includes("cctv working")){
-
-        if(val >= 70) return "green";
-        if(val >= 50) return "orange";
-        return "red";
-
-    }
-
-    if(name.includes("cctv not")){
-
-        if(val <= 5) return "green";
-        if(val <= 15) return "orange";
-        return "red";
-
-    }
-
-    return "blue";
-
-}
-
-function getCCTVHealth(working,down){
-
-    const total = working + down;
-
-    if(total===0) return 0;
-
-    return Math.round((working/total)*100);
-
-}
-function airQuality(pm){
-
-    pm = Number(pm);
-
-    if(pm <= 30) return "🟢 GOOD";
-
-    if(pm <= 60) return "🟡 MODERATE";
-
-    return "🔴 POOR";
-
-}
-function createAirCard(location, pmValue){
-
-    const pm = Number(pmValue);
-
-    let status = "";
-    let color = "";
-    let percent = 100;
-
-    if(pm <= 30){
-
-        status = "🟢 GOOD";
-        color = "#00C853";
-        percent = 90;
-
-    }
-
-    else if(pm <= 60){
-
-        status = "🟡 MODERATE";
-        color = "#FFD600";
-        percent = 60;
-
-    }
-
-    else{
-
-        status = "🔴 POOR";
-        color = "#F44336";
-        percent = 30;
-
-    }
-
-    return `
-
-<div class="card blue">
-
-<h3>🌍 AIR QUALITY</h3>
-
-<p>📍 ${location}</p>
-
-<h1>${pm}</h1>
-
-<p>µg/m³</p>
-
-<div style="margin-top:10px;
-font-size:18px;
-font-weight:bold;
-color:${color};">
-
-${status}
-
-</div>
-
-<div class="progress">
-
-<div class="progressFill"
-
-style="width:${percent}%;
-background:${color};">
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-// =========================================
-// ANIMATE NUMBERS
-// =========================================
-
-function animateValue(element,start,end,duration){
-
-    let startTime=null;
-
-    function animation(currentTime){
-
-        if(!startTime) startTime=currentTime;
-
-        const progress=Math.min((currentTime-startTime)/duration,1);
-
-        element.innerHTML=Math.floor(progress*(end-start)+start);
-
-        if(progress<1){
-
-            requestAnimationFrame(animation);
-
-        }
-
-    }
-
-    requestAnimationFrame(animation);
-
-}
-// =========================================
-// DASHBOARD INITIALIZATION
-// =========================================
-
-// Start Live Clock
-updateClock();
-
-// Load Dashboard Data
-loadDashboard();
-
-// Load Weather
-loadWeather();
-
-// Update Clock Every Second
-setInterval(updateClock, 1000);
-
-// Refresh Dashboard Every Minute
-setInterval(loadDashboard, 60000);
-
-// Refresh Weather Every 10 Minutes
-setInterval(loadWeather, 600000);
