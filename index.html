@@ -3,13 +3,13 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ORGANO OFM DASHBOARD</title>
+    <title>ORGANO OFM DASHBOARD</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -19,130 +19,111 @@
 
 <div class="dashboard">
 
-<!-- ================= HEADER ================= -->
+    <!-- ================= HEADER ================= -->
 
-<header>
+    <header>
 
-<div class="logo">
-<img src="assets/logo.png" alt="Organo">
-</div>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Organo">
+        </div>
 
-<div class="title">
-<h1>ORGANO ANTHARAM</h1>
-<p>Daily OFM Dashboard</p>
-</div>
+        <div class="title">
+            <h1>ORGANO ANTHARAM</h1>
+            <p>Daily OFM Dashboard</p>
+        </div>
 
-<div class="headerRight">
+        <div class="headerRight">
 
-<div id="weather">
-Loading Weather...
-</div>
+            <div id="weather">
+                Loading Weather...
+            </div>
 
-<div id="currentDate"></div>
+            <div id="currentDate"></div>
 
-<div id="currentTime"></div>
+            <div id="currentTime"></div>
 
-</div>
+        </div>
 
-</header>
+    </header>
 
-<!-- ================= MAIN GRID ================= -->
+    <!-- ================= MAIN GRID ================= -->
 
-<div class="mainGrid">
+    <div class="mainGrid">
 
-<!-- LEFT COLUMN -->
+        <!-- LEFT COLUMN -->
 
-<div class="leftColumn">
+        <div class="leftColumn">
 
-<!-- ENERGY -->
+            <!-- ENERGY -->
 
-<section class="section energy">
+            <section class="section energy">
 
-<h2>⚡ ENERGY</h2>
+                <h2>⚡ ENERGY</h2>
 
-<div class="cards" id="energyCards"></div>
+                <div class="cards" id="energyCards"></div>
 
-</section>
+            </section>
 
-<!-- VISITORS -->
+            <!-- DIESEL GENERATORS -->
 
-<section class="section visitors">
+            <section class="section dg">
 
-<h2>👥 VISITORS</h2>
+                <h2>⛽ DIESEL GENERATORS</h2>
 
-<div class="cards" id="visitorCards"></div>
+                <div class="cards" id="dgCards"></div>
 
-</section>
+            </section>
 
-<!-- DG -->
+        </div>
 
-<section class="section dg">
+        <!-- RIGHT COLUMN -->
 
-<h2>⛽ DIESEL GENERATORS</h2>
+        <div class="rightColumn">
 
-<div class="cards" id="dgCards"></div>
+            <!-- WATER -->
 
-</section>
+            <section class="section water">
 
-</div>
+                <h2>💧 WATER</h2>
 
-<!-- RIGHT COLUMN -->
+                <div class="cards" id="waterCards"></div>
 
-<div class="rightColumn">
+            </section>
 
-<!-- WATER -->
+            <!-- AMENITIES -->
 
-<section class="section water">
+            <section class="section amenities">
 
-<h2>💧 WATER</h2>
+                <h2>🏠 AMENITIES</h2>
 
-<div class="cards" id="waterCards"></div>
+                <div class="cards" id="amenityCards"></div>
 
-</section>
+            </section>
 
-<!-- CCTV -->
+        </div>
 
-<section class="section cctv">
+        <!-- AIR QUALITY -->
 
-<h2>📷 CCTV STATUS</h2>
+        <section class="section air fullWidth">
 
-<div class="cards" id="cctvCards"></div>
+            <h2>🌍 AIR QUALITY</h2>
 
-</section>
+            <div class="cards" id="airCards"></div>
 
-<!-- AMENITIES -->
+        </section>
 
-<section class="section amenities">
-
-<h2>🏠 AMENITIES</h2>
-
-<div class="cards" id="amenityCards"></div>
-
-</section>
-
-</div>
-<!-- ================= AIR QUALITY ================= -->
-
-<section class="section air fullWidth">
-
-<h2>🌍 AIR QUALITY</h2>
-
-<div class="cards" id="airCards"></div>
-
-</section>
-
-</div>
+    </div>
 
 </div>
 
 <footer>
 
-Organo Eco Habitats Pvt Ltd
+    Organo Eco Habitats Pvt Ltd
 
 </footer>
 
-</body>
-
 <script src="script.js"></script>
+
+</body>
 
 </html>
