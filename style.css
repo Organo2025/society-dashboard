@@ -168,8 +168,6 @@ font-weight:bold;
 
     450px
 
-    1fr;
-
     gap:20px;
 
 }
@@ -381,23 +379,23 @@ FOOTER
 
 footer{
 
-    height:28px;
+position:fixed;
 
-    display:flex;
+left:0;
 
-    align-items:center;
+bottom:5px;
 
-    justify-content:center;
+width:100%;
 
-    font-size:13px;
+height:20px;
 
-    color:#ffffff;
+display:flex;
 
-    opacity:.85;
+justify-content:center;
 
-    letter-spacing:1px;
+align-items:center;
 
-    text-shadow:0 2px 8px rgba(0,0,0,.7);
+font-size:14px;
 
 }
 
