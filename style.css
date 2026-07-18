@@ -124,7 +124,7 @@ LOGO
 
 .logoArea img{
 
-    height:60px;
+    height:80px;
 
 }
 
@@ -152,7 +152,7 @@ TITLE
 
 .titleArea p{
 
-    margin-top:5px;
+    margin-top:10px;
 
     font-size:17px;
 
@@ -186,7 +186,7 @@ WEATHER
 
     vertical-align:middle;
 
-    margin-right:6px;
+    margin-right:10px;
 
 }
 
