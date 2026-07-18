@@ -222,7 +222,8 @@ LEFT PANEL
 ==============================*/
 
 .statusPanel{
-
+    width:100%;
+    min-width:600px;
     background:var(--glass);
 
     border:1px solid var(--glassBorder);
