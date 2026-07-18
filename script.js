@@ -1,72 +1,149 @@
-// ======================================================
-// ORGANO OFM DASHBOARD V7
-// ======================================================
+// =====================================================
+// ORGANO OFM DASHBOARD V8
+// =====================================================
 
-const API_URL = "https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
+// ===============================
+// CONFIGURATION
+// ===============================
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwe9iLSaqOtoW_7AC7UwZQ1NFrFWAox227cL1vPDttBgv_vU0tmjyFXbA6VURhc5Ws_jw/exec";
+
+const LAT = 17.3850;
+const LON = 78.4867;
 
 const tbody = document.getElementById("dashboardData");
 
-// ------------------------------------------------------
-// Fetch Dashboard Data
-// ------------------------------------------------------
+// Icons
 
-async function loadDashboard() {
+const ICONS = {
 
-    try {
+    "Grid Energy":"⚡",
+    "Solar Generation":"☀️",
+    "Dug Well":"💧",
+    "STP":"🚰",
+    "Total DG Units":"⛽",
+    "Total Diesel":"🛢️",
+    "Suit Room":"🏠",
+    "Driver Room Bookings":"🚗",
+    "PM 2.5":"🌫️",
+    "Air Pollution Level":"🌍"
+
+};
+
+// ===============================
+// LOADING MESSAGE
+// ===============================
+
+function showLoading(){
+
+    tbody.innerHTML =
+
+    `<tr>
+
+        <td colspan="3"
+
+        style="text-align:center;padding:25px;">
+
+        Loading Dashboard...
+
+        </td>
+
+    </tr>`;
+
+}
+
+// ===============================
+// ERROR MESSAGE
+// ===============================
+
+function showError(){
+
+    tbody.innerHTML =
+
+    `<tr>
+
+        <td colspan="3"
+
+        style="text-align:center;color:#ff8080;padding:25px;">
+
+        Unable to load dashboard.
+
+        </td>
+
+    </tr>`;
+
+}
+
+// ===============================
+// FETCH DASHBOARD
+// ===============================
+
+async function loadDashboard(){
+
+    showLoading();
+
+    try{
 
         const response = await fetch(API_URL);
+
+        if(!response.ok){
+
+            throw new Error("Network Error");
+
+        }
 
         const data = await response.json();
 
         renderDashboard(data);
 
-    } catch (err) {
+    }
 
-        console.error(err);
+    catch(error){
 
-        tbody.innerHTML =
-        `<tr>
-            <td colspan="3">Unable to load dashboard data.</td>
-        </tr>`;
+        console.error(error);
+
+        showError();
 
     }
 
 }
 
-// ------------------------------------------------------
-// Render Table
-// ------------------------------------------------------
+// ===============================
+// RENDER TABLE
+// ===============================
 
 function renderDashboard(data){
 
-    tbody.innerHTML = "";
-
-    const icons = {
-
-        "Grid Energy":"⚡",
-        "Solar Generation":"☀",
-        "Dug Well":"💧",
-        "STP":"🚰",
-        "Total DG Units":"⛽",
-        "Total Diesel":"🛢",
-        "Suit Room":"🏠",
-        "Driver Room Bookings":"🚗",
-        "PM 2.5":"🌫",
-        "Air Pollution Level":"🌍"
-
-    };
+    tbody.innerHTML="";
 
     data.forEach(item=>{
 
         const row=document.createElement("tr");
 
-        row.innerHTML=`
+        row.innerHTML=
 
-        <td>${icons[item.metric] || "📌"} ${item.metric}</td>
+        `
 
-        <td>${item.value}</td>
+        <td>
 
-        <td>${item.unit}</td>
+        ${ICONS[item.metric] || "📌"}
+
+        ${item.metric}
+
+        </td>
+
+        <td>
+
+        ${item.value}
+
+        </td>
+
+        <td>
+
+        ${item.unit}
+
+        </td>
 
         `;
 
@@ -75,78 +152,110 @@ function renderDashboard(data){
     });
 
 }
-// ======================================================
-// LIVE DATE & TIME
-// ======================================================
 
-function updateDateTime() {
+// ===============================
+// DATE & TIME
+// ===============================
+
+function updateClock(){
 
     const now = new Date();
 
-    document.getElementById("currentDate").innerHTML =
-        now.toLocaleDateString("en-IN", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        });
+    document.getElementById("currentDate").textContent =
 
-    document.getElementById("currentTime").innerHTML =
-        now.toLocaleTimeString("en-IN", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        });
+    now.toLocaleDateString(
+
+        "en-IN",
+
+        {
+
+            weekday:"long",
+
+            day:"numeric",
+
+            month:"long",
+
+            year:"numeric"
+
+        }
+
+    );
+
+    document.getElementById("currentTime").textContent =
+
+    now.toLocaleTimeString(
+
+        "en-IN",
+
+        {
+
+            hour:"2-digit",
+
+            minute:"2-digit",
+
+            second:"2-digit"
+
+        }
+
+    );
 
 }
 
-setInterval(updateDateTime, 1000);
-updateDateTime();
-
-
-// ======================================================
+// ===============================
 // WEATHER
-// ======================================================
+// ===============================
 
-// Replace these with your location
-const LAT = 17.3850;
-const LON = 78.4867;
+async function loadWeather(){
 
-async function loadWeather() {
-
-    try {
+    try{
 
         const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
+
+`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
+
         );
 
-        const data = await response.json();
+        const weather = await response.json();
 
         document.getElementById("weather").innerHTML =
 
-            `🌤 ${data.current.temperature_2m}°C |
-             💧 ${data.current.relative_humidity_2m}% |
-             🌬 ${data.current.wind_speed_10m} km/h`;
+        `🌤 ${weather.current.temperature_2m}°C
+
+        &nbsp;&nbsp;
+
+        💧 ${weather.current.relative_humidity_2m}%
+
+        &nbsp;&nbsp;
+
+        🌬 ${weather.current.wind_speed_10m} km/h`;
 
     }
 
-    catch (e) {
+    catch{
 
         document.getElementById("weather").innerHTML =
-            "Weather Unavailable";
+
+        "Weather Unavailable";
 
     }
 
 }
+
+// ===============================
+// INITIAL LOAD
+// ===============================
+
+loadDashboard();
 
 loadWeather();
 
+updateClock();
 
-// ======================================================
+// ===============================
 // AUTO REFRESH
-// ======================================================
+// ===============================
 
-loadDashboard();
+setInterval(updateClock,1000);
 
 setInterval(loadDashboard,60000);
 
