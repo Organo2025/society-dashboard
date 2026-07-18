@@ -3,15 +3,15 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>ORGANO OFM DASHBOARD</title>
+    <title>ORGANO ANTHARAM OFM DASHBOARD</title>
 
-<link rel="stylesheet"
-href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
@@ -21,110 +21,204 @@ href="style.css">
 
 <div class="dashboard">
 
-<!-- ================= HEADER ================= -->
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
 
-<header>
+    <header class="topHeader">
 
-<div class="logo">
+        <!-- LOGO -->
 
-<img src="assets/logo.png">
+        <div class="logo">
+
+            <img src="assets/logo.png"
+                 alt="Organo Logo">
+
+        </div>
+
+        <!-- TITLE -->
+
+        <div class="title">
+
+            <h1>ORGANO ANTHARAM</h1>
+
+            <p>Daily OFM Dashboard</p>
+
+        </div>
+
+        <!-- WEATHER CARD -->
+
+        <div class="weatherCard">
+
+            <div class="weatherRow">
+
+                <div id="weather">
+
+                    🌤 Loading Weather...
+
+                </div>
+
+            </div>
+
+            <div class="weatherDivider"></div>
+
+            <div class="dateTime">
+
+                <div id="currentDate"></div>
+
+                <div id="currentTime"></div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ===================================================== -->
+    <!-- BODY -->
+    <!-- ===================================================== -->
+
+    <div class="content">
+
+        <!-- ============================================== -->
+        <!-- LEFT PANEL -->
+        <!-- ============================================== -->
+
+        <aside class="leftPanel">
+
+            <div class="statusBox">
+
+                <h2>
+
+                    📊 DAILY STATUS
+
+                </h2>
+
+                <table id="statusTable">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Parameter</th>
+
+                        <th>Value</th>
+
+                        <th>Unit</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="dashboardData">
+
+                    <!-- Filled by JavaScript -->
+
+                    </tbody>
+
+                </table>
+
+                <hr class="divider">
+
+                <!-- ======================================= -->
+                <!-- AIR QUALITY -->
+                <!-- ======================================= -->
+
+                <div class="airQuality">
+
+                    <h3>
+
+                        📍 Air Quality Station
+
+                    </h3>
+
+                    <div id="aqLocation">
+
+                        Loading...
+
+                    </div>
+
+                    <div class="aqRow">
+
+                        <span>
+
+                            🌫 PM2.5
+
+                        </span>
+
+                        <span id="pm25">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+                    <div class="aqRow">
+
+                        <span>
+
+                            🌍 AQI
+
+                        </span>
+
+                        <span id="aqi">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- ============================================== -->
+        <!-- RIGHT PANEL -->
+        <!-- ============================================== -->
+
+        <section class="rightPanel">
+
+            <div class="heroImage">
+                              <!-- Background image only -->
+                <!-- No repeated title -->
+
+                <div class="imageOverlay"></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================================== -->
+
+    <footer>
+
+        <div class="footerLeft">
+
+            © 2026 Organo Eco Habitats Pvt. Ltd.
+
+        </div>
+
+        <div class="footerRight">
+
+            OFM Dashboard v8
+
+        </div>
+
+    </footer>
 
 </div>
 
-<div class="title">
-
-<h1>ORGANO ANTHARAM</h1>
-
-<p>Daily OFM Dashboard</p>
-
-</div>
-
-<div class="headerRight">
-
-<div id="weather">
-
-Loading...
-
-</div>
-
-<div id="currentDate"></div>
-
-<div id="currentTime"></div>
-
-</div>
-
-</header>
-
-<!-- ================= BODY ================= -->
-
-<div class="content">
-
-<!-- LEFT PANEL -->
-
-<div class="leftPanel">
-
-<div class="statusBox">
-
-<h2>
-
-📊 DAILY STATUS
-
-</h2>
-
-<table id="statusTable">
-
-<thead>
-
-<tr>
-
-<th>Parameter</th>
-
-<th>Value</th>
-
-<th>Unit</th>
-
-</tr>
-
-</thead>
-
-<tbody id="dashboardData">
-
-<!-- JavaScript will fill this -->
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-<!-- RIGHT PANEL -->
-
-<div class="rightPanel">
-
-<div class="heroImage">
-
-<div class="welcome">
-
-<h2>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-© 2026 Organo Eco Habitats Pvt. Ltd.
-
-</footer>
-
-</div>
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
 
 <script src="script.js"></script>
 
