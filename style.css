@@ -1,11 +1,11 @@
 /*=========================================================
-    ORGANO OFM DASHBOARD V8
-    PROFESSIONAL DIGITAL SIGNAGE
+    ORGANO OFM DASHBOARD V9
+    FOUNDATION
 =========================================================*/
 
-/*==========================
-  RESET
-==========================*/
+/*==============================
+RESET
+==============================*/
 
 *{
     margin:0;
@@ -14,20 +14,27 @@
     font-family:"Segoe UI",Arial,sans-serif;
 }
 
+:root{
+
+    --glass:rgba(20,30,40,.55);
+    --glassBorder:rgba(255,255,255,.15);
+    --white:#ffffff;
+    --shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
 html,
 body{
+
     width:100%;
     height:100%;
     overflow:hidden;
-}
 
-/*==========================
-  BODY
-==========================*/
+}
 
 body{
 
-    color:#ffffff;
+    color:var(--white);
 
     background:url("assets/background.jpg") center center no-repeat;
 
@@ -35,17 +42,17 @@ body{
 
 }
 
-/*==========================
-  OVERLAY
-==========================*/
+/*==============================
+BACKGROUND OVERLAY
+==============================*/
 
-.overlay{
+.backgroundOverlay{
 
     position:fixed;
 
     inset:0;
 
-    background:rgba(0,0,0,.18);
+    background:rgba(0,0,0,.20);
 
     backdrop-filter:blur(2px);
 
@@ -53,9 +60,9 @@ body{
 
 }
 
-/*==========================
-  DASHBOARD
-==========================*/
+/*==============================
+DASHBOARD
+==============================*/
 
 .dashboard{
 
@@ -67,39 +74,49 @@ body{
 
     height:100vh;
 
-    display:flex;
-
-    flex-direction:column;
-
-    padding:15px;
-
-}
-
-/*==========================
-  HEADER
-==========================*/
-
-header{
-
-    height:80px;
+    padding:18px;
 
     display:grid;
 
-    grid-template-columns:180px 1fr 320px;
+    grid-template-rows:
 
-    align-items:center;
+        80px      /* Header */
 
-    column-gap:20px;
+        95px      /* KPI Row */
 
-    margin-bottom:15px;
+        1fr       /* Main */
+
+        35px;     /* Footer */
+
+    gap:18px;
 
 }
 
-/*==========================
-  LOGO
-==========================*/
+/*====================================================
+HEADER
+====================================================*/
 
-.logo{
+.topBar{
+
+    display:grid;
+
+    grid-template-columns:
+
+        180px
+
+        1fr
+
+        330px;
+
+    align-items:center;
+
+}
+
+/*==============================
+LOGO
+==============================*/
+
+.logoArea{
 
     display:flex;
 
@@ -107,49 +124,49 @@ header{
 
 }
 
-.logo img{
+.logoArea img{
 
     height:60px;
 
 }
 
-/*==========================
-  TITLE
-==========================*/
+/*==============================
+TITLE
+==============================*/
 
-.title{
+.titleArea{
 
     text-align:center;
 
 }
 
-.title h1{
+.titleArea h1{
 
-    font-size:42px;
-
-    font-weight:700;
+    font-size:44px;
 
     letter-spacing:2px;
+
+    font-weight:700;
 
     text-shadow:0 4px 12px rgba(0,0,0,.60);
 
 }
 
-.title p{
+.titleArea p{
 
     margin-top:5px;
 
-    font-size:18px;
+    font-size:17px;
 
     opacity:.95;
 
 }
 
-/*==========================
-  WEATHER
-==========================*/
+/*==============================
+WEATHER
+==============================*/
 
-.headerRight{
+.weatherArea{
 
     text-align:right;
 
@@ -157,127 +174,101 @@ header{
 
 #weather{
 
-    font-size:24px;
+    font-size:23px;
 
     font-weight:700;
 
-    margin-bottom:8px;
+    margin-bottom:6px;
 
 }
 
 #weather img{
 
-    width:40px;
+    width:34px;
 
     vertical-align:middle;
 
-    margin-right:8px;
+    margin-right:6px;
 
 }
 
 #currentDate{
 
-    font-size:18px;
+    font-size:17px;
 
-    margin-bottom:5px;
+    margin-bottom:4px;
 
 }
 
 #currentTime{
 
-    font-size:24px;
+    font-size:23px;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
-/*==========================
-  CONTENT
-==========================*/
+/*====================================================
+MAIN AREA
+====================================================*/
 
-.content{
-
-    flex:1;
+.mainContent{
 
     display:grid;
 
-    grid-template-columns:440px 1fr;
+    grid-template-columns:
 
-    gap:20px;
+        430px
 
-    min-height:0;
+        1fr;
 
-}
-
-/*==========================
-  LEFT PANEL
-==========================*/
-
-.leftPanel{
-
-    display:flex;
+    gap:18px;
 
     min-height:0;
 
 }
 
-/*==========================
-  STATUS BOX
-==========================*/
+/*==============================
+LEFT PANEL
+==============================*/
 
-.statusBox{
+.statusPanel{
 
-    width:100%;
+    background:var(--glass);
+
+    border:1px solid var(--glassBorder);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:var(--shadow);
 
     display:flex;
 
     flex-direction:column;
 
-    background:rgba(18,28,38,.55);
-
-    border-radius:20px;
-
-    border:1px solid rgba(255,255,255,.18);
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.35),
-        inset 0 1px 1px rgba(255,255,255,.08);
-
-    padding:18px;
-
-}
-
-.statusBox h2{
-
-    font-size:28px;
-
-    margin-bottom:15px;
-
-    border-left:5px solid #00BCD4;
-
-    padding-left:12px;
-
-}
-
-/*==========================
-  RIGHT PANEL
-==========================*/
-
-.rightPanel{
-
-    position:relative;
-
     overflow:hidden;
+
+}
+
+/*==============================
+RIGHT PANEL
+==============================*/
+
+.imagePanel{
+
+    background:var(--glass);
 
     border-radius:22px;
 
-    background:rgba(255,255,255,.05);
+    overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid var(--glassBorder);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
+    box-shadow:var(--shadow);
+
+    position:relative;
 
 }
 
@@ -293,71 +284,21 @@ header{
 
     background-position:center;
 
-    background-repeat:no-repeat;
-
-    position:relative;
+    transition:transform 8s ease;
 
 }
 
-/*==========================
-  IMAGE OVERLAY
-==========================*/
+.imagePanel:hover .heroImage{
 
-.imageOverlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:linear-gradient(
-        90deg,
-        rgba(0,0,0,.10),
-        rgba(0,0,0,.02)
-    );
+    transform:scale(1.03);
 
 }
 
-/*==========================
-  WELCOME
-==========================*/
-
-.welcome{
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    text-align:center;
-
-}
-
-.welcome h2{
-
-    font-size:48px;
-
-    text-shadow:0 5px 18px rgba(0,0,0,.65);
-
-}
-
-.welcome p{
-
-    margin-top:12px;
-
-    font-size:24px;
-
-}
-
-/*==========================
-  FOOTER
-==========================*/
+/*====================================================
+FOOTER
+====================================================*/
 
 footer{
-
-    height:32px;
 
     display:flex;
 
@@ -367,132 +308,132 @@ footer{
 
     font-size:14px;
 
-    color:#ffffff;
-
     letter-spacing:1px;
 
     opacity:.85;
 
 }
+
+/*====================================================
+SCROLLBAR
+====================================================*/
+
+::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
 /*=========================================================
-    PROFESSIONAL STATUS TABLE
+    KPI CARDS
 =========================================================*/
 
-table{
+.kpiContainer{
 
-    width:100%;
+    display:grid;
 
-    border-collapse:collapse;
+    grid-template-columns:repeat(8,1fr);
 
-    table-layout:fixed;
-
-}
-
-/*==========================
-  TABLE HEADER
-==========================*/
-
-thead{
-
-    background:rgba(255,255,255,.10);
+    gap:15px;
 
 }
 
-thead th{
+/*=========================================================
+CARD
+=========================================================*/
 
-    padding:14px 12px;
+.kpiCard{
 
-    font-size:19px;
+    background:rgba(20,30,40,.55);
 
-    font-weight:700;
+    border:1px solid rgba(255,255,255,.15);
 
-    color:#ffffff;
+    border-radius:18px;
 
-    text-transform:uppercase;
+    backdrop-filter:blur(12px);
 
-    border-bottom:2px solid rgba(255,255,255,.18);
+    box-shadow:
+
+        0 8px 25px rgba(0,0,0,.30),
+
+        inset 0 1px 1px rgba(255,255,255,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.35s;
+
+    cursor:pointer;
 
 }
 
-thead th:nth-child(1){
+.kpiCard:hover{
 
-    width:58%;
+    transform:translateY(-6px);
 
-    text-align:left;
+    background:rgba(25,40,55,.70);
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.40);
 
 }
 
-thead th:nth-child(2){
+/*=========================================================
+ICON
+=========================================================*/
 
-    width:22%;
+.kpiCard .icon{
+
+    font-size:28px;
+
+    margin-bottom:6px;
+
+}
+
+/*=========================================================
+LABEL
+=========================================================*/
+
+.kpiCard .label{
+
+    font-size:13px;
+
+    color:#EAEAEA;
+
+    letter-spacing:.5px;
+
+    margin-bottom:5px;
 
     text-align:center;
 
 }
 
-thead th:nth-child(3){
+/*=========================================================
+VALUE
+=========================================================*/
 
-    width:20%;
+.kpiCard .value{
 
-    text-align:center;
-
-}
-
-/*==========================
-  TABLE BODY
-==========================*/
-
-tbody{
-
-    overflow:hidden;
-
-}
-
-tbody tr{
-
-    transition:.30s;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-tbody tr:hover{
-
-    background:rgba(255,255,255,.08);
-
-}
-
-tbody td{
-
-    padding:12px 10px;
-
-    font-size:20px;
-
-    font-weight:500;
-
-    color:#ffffff;
-
-}
-
-/*==========================
-  COLUMN ALIGNMENT
-==========================*/
-
-tbody td:nth-child(1){
-
-    text-align:left;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-}
-
-tbody td:nth-child(2){
-
-    text-align:center;
+    font-size:26px;
 
     font-weight:700;
 
@@ -500,93 +441,87 @@ tbody td:nth-child(2){
 
 }
 
-tbody td:nth-child(3){
+/*=========================================================
+INDIVIDUAL CARD COLORS
+=========================================================*/
 
-    text-align:center;
+#gridEnergy{
 
-    color:#E0E0E0;
-
-}
-
-/*==========================
-  ROW COLORS
-==========================*/
-
-tbody tr:nth-child(odd){
-
-    background:rgba(255,255,255,.02);
+    color:#FFD54F;
 
 }
 
-tbody tr:nth-child(even){
+#solarGeneration{
 
-    background:rgba(255,255,255,.04);
-
-}
-
-/*==========================
-  VALUE COLORS
-==========================*/
-
-tbody tr:nth-child(1) td:nth-child(2){ color:#FFEB3B; }
-
-tbody tr:nth-child(2) td:nth-child(2){ color:#FFC107; }
-
-tbody tr:nth-child(3) td:nth-child(2){ color:#4FC3F7; }
-
-tbody tr:nth-child(4) td:nth-child(2){ color:#29B6F6; }
-
-tbody tr:nth-child(5) td:nth-child(2){ color:#FF7043; }
-
-tbody tr:nth-child(6) td:nth-child(2){ color:#EF5350; }
-
-tbody tr:nth-child(7) td:nth-child(2){ color:#8BC34A; }
-
-tbody tr:nth-child(8) td:nth-child(2){ color:#66BB6A; }
-
-tbody tr:nth-child(9) td:nth-child(2){ color:#00E5FF; }
-
-tbody tr:nth-child(10) td:nth-child(2){ color:#26C6DA; }
-
-/*==========================
-  TABLE SCROLL
-==========================*/
-
-.statusBox{
-
-    overflow:hidden;
+    color:#FFEB3B;
 
 }
 
-#statusTable{
+#dgUnits{
 
-    flex:1;
-
-}
-
-#dashboardData{
-
-    overflow:hidden;
+    color:#FF7043;
 
 }
 
-/*==========================
-  SMOOTH ENTRY ANIMATION
-==========================*/
+#diesel{
 
-tbody tr{
-
-    animation:fadeUp .45s ease;
+    color:#EF5350;
 
 }
 
-@keyframes fadeUp{
+#water{
+
+    color:#29B6F6;
+
+}
+
+#aqi{
+
+    color:#8BC34A;
+
+}
+
+#hive{
+
+    color:#AB47BC;
+
+}
+
+#stp{
+
+    color:#26C6DA;
+
+}
+
+/*=========================================================
+GLOW EFFECT
+=========================================================*/
+
+.kpiCard:hover .value{
+
+    text-shadow:
+
+        0 0 12px rgba(255,255,255,.50);
+
+}
+
+/*=========================================================
+ANIMATION
+=========================================================*/
+
+.kpiCard{
+
+    animation:kpiFade .7s ease;
+
+}
+
+@keyframes kpiFade{
 
     from{
 
         opacity:0;
 
-        transform:translateY(12px);
+        transform:translateY(25px);
 
     }
 
@@ -600,129 +535,366 @@ tbody tr{
 
 }
 /*=========================================================
-    HERO IMAGE
+    STATUS PANEL
 =========================================================*/
 
-.rightPanel{
+.panelTitle{
 
-    position:relative;
+    height:60px;
 
-    overflow:hidden;
+    display:flex;
 
-    border-radius:22px;
+    align-items:center;
 
-    border:1px solid rgba(255,255,255,.18);
+    padding:0 20px;
 
-    box-shadow:
-        0 20px 40px rgba(0,0,0,.35);
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    background:rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+    letter-spacing:1px;
 
 }
 
-/*==========================
-BACKGROUND IMAGE
-==========================*/
+/*=========================================================
+TABLE CONTAINER
+=========================================================*/
 
-.heroImage{
+#statusTable{
 
     width:100%;
 
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+/*=========================================================
+TABLE HEADER
+=========================================================*/
+
+#statusTable thead{
+
+    position:sticky;
+
+    top:0;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(8px);
+
+}
+
+#statusTable thead th{
+
+    padding:15px 12px;
+
+    font-size:18px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:#ffffff;
+
+    border-bottom:2px solid rgba(255,255,255,.15);
+
+}
+
+#statusTable thead th:nth-child(1){
+
+    width:58%;
+
+    text-align:left;
+
+}
+
+#statusTable thead th:nth-child(2){
+
+    width:22%;
+
+    text-align:center;
+
+}
+
+#statusTable thead th:nth-child(3){
+
+    width:20%;
+
+    text-align:center;
+
+}
+
+/*=========================================================
+TABLE BODY
+=========================================================*/
+
+#dashboardData tr{
+
+    transition:.30s;
+
+}
+
+#dashboardData tr:nth-child(odd){
+
+    background:rgba(255,255,255,.02);
+
+}
+
+#dashboardData tr:nth-child(even){
+
+    background:rgba(255,255,255,.05);
+
+}
+
+#dashboardData tr:hover{
+
+    background:rgba(255,255,255,.10);
+
+    transform:scale(1.01);
+
+}
+
+/*=========================================================
+TABLE CELLS
+=========================================================*/
+
+#dashboardData td{
+
+    padding:13px 12px;
+
+    font-size:19px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+#dashboardData td:nth-child(1){
+
+    text-align:left;
+
+    color:#ffffff;
+
+    font-weight:500;
+
+}
+
+#dashboardData td:nth-child(2){
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#00E5FF;
+
+}
+
+#dashboardData td:nth-child(3){
+
+    text-align:center;
+
+    color:#E0E0E0;
+
+}
+
+/*=========================================================
+ROW COLORS
+=========================================================*/
+
+#dashboardData tr:nth-child(1) td:nth-child(2){
+
+    color:#FFD54F;
+
+}
+
+#dashboardData tr:nth-child(2) td:nth-child(2){
+
+    color:#FFEB3B;
+
+}
+
+#dashboardData tr:nth-child(3) td:nth-child(2){
+
+    color:#29B6F6;
+
+}
+
+#dashboardData tr:nth-child(4) td:nth-child(2){
+
+    color:#26C6DA;
+
+}
+
+#dashboardData tr:nth-child(5) td:nth-child(2){
+
+    color:#FF7043;
+
+}
+
+#dashboardData tr:nth-child(6) td:nth-child(2){
+
+    color:#EF5350;
+
+}
+
+#dashboardData tr:nth-child(7) td:nth-child(2){
+
+    color:#8BC34A;
+
+}
+
+#dashboardData tr:nth-child(8) td:nth-child(2){
+
+    color:#66BB6A;
+
+}
+
+#dashboardData tr:nth-child(9) td:nth-child(2){
+
+    color:#AB47BC;
+
+}
+
+#dashboardData tr:nth-child(10) td:nth-child(2){
+
+    color:#26C6DA;
+
+}
+
+/*=========================================================
+TABLE ANIMATION
+=========================================================*/
+
+#dashboardData tr{
+
+    animation:fadeRow .5s ease;
+
+}
+
+@keyframes fadeRow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+/*=========================================================
+    HERO IMAGE PANEL
+=========================================================*/
+
+.imagePanel{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(20,30,40,.35);
+    backdrop-filter:blur(8px);
+}
+
+.heroImage{
+    width:100%;
     height:100%;
-
-    background-image:url("assets/background.jpg");
-
+    background:url("assets/background.jpg") center center;
     background-size:cover;
-
-    background-position:center center;
-
-    background-repeat:no-repeat;
-
-    transition:transform 8s ease;
-
+    position:relative;
+    transition:transform 12s ease;
 }
 
-/* Slow Zoom Effect */
-
-.rightPanel:hover .heroImage{
-
-    transform:scale(1.03);
-
+.imagePanel:hover .heroImage{
+    transform:scale(1.05);
 }
 
-/*==========================
-IMAGE OVERLAY
-==========================*/
+/* Dark Overlay */
 
-.imageOverlay{
+.heroImage::before{
+
+    content:"";
 
     position:absolute;
 
     inset:0;
 
-    background:
+    background:linear-gradient(
 
-    linear-gradient(
+        90deg,
 
-        to right,
+        rgba(0,0,0,.30),
 
-        rgba(0,0,0,.28),
-
-        rgba(0,0,0,.08)
+        rgba(0,0,0,.05)
 
     );
 
 }
 
 /*=========================================================
-WELCOME TEXT
+    HERO TEXT
 =========================================================*/
 
-.welcome{
+.heroText{
 
     position:absolute;
 
-    top:50%;
-
     left:50%;
+
+    top:50%;
 
     transform:translate(-50%,-50%);
 
     text-align:center;
 
-    width:90%;
+    color:#fff;
+
+    z-index:5;
 
 }
 
-.welcome h2{
+.heroText h2{
 
-    font-size:52px;
+    font-size:56px;
 
     font-weight:700;
 
-    letter-spacing:2px;
-
-    text-shadow:
-
-        0 5px 18px rgba(0,0,0,.60);
+    text-shadow:0 5px 20px rgba(0,0,0,.6);
 
 }
 
-.welcome p{
+.heroText p{
 
-    margin-top:15px;
+    margin-top:12px;
 
     font-size:24px;
-
-    font-weight:400;
 
     opacity:.95;
 
 }
 
 /*=========================================================
-STATUS BOX SHADOW
+    PANEL SHADOWS
 =========================================================*/
 
-.statusBox{
+.statusPanel,
+.imagePanel{
 
     box-shadow:
 
@@ -733,48 +905,12 @@ STATUS BOX SHADOW
 }
 
 /*=========================================================
-HEADER SHADOW
-=========================================================*/
-
-header{
-
-    text-shadow:
-
-        0 4px 10px rgba(0,0,0,.50);
-
-}
-
-/*=========================================================
-FOOTER
-=========================================================*/
-
-footer{
-
-    height:35px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:#ffffff;
-
-    font-size:15px;
-
-    letter-spacing:1px;
-
-    opacity:.85;
-
-}
-
-/*=========================================================
-SMOOTH PAGE FADE
+    PAGE ANIMATION
 =========================================================*/
 
 .dashboard{
 
-    animation:dashboardFade .8s ease;
+    animation:dashboardFade .7s ease;
 
 }
 
@@ -784,7 +920,7 @@ SMOOTH PAGE FADE
 
         opacity:0;
 
-        transform:translateY(15px);
+        transform:translateY(20px);
 
     }
 
@@ -799,149 +935,8 @@ SMOOTH PAGE FADE
 }
 
 /*=========================================================
-GLASS EFFECT
+    55-INCH TV (1920x1080)
 =========================================================*/
-
-.statusBox{
-
-    background:rgba(18,28,38,.58);
-
-    backdrop-filter:blur(14px);
-
-}
-
-/*=========================================================
-CUSTOM SCROLLBAR
-=========================================================*/
-
-::-webkit-scrollbar{
-
-    width:6px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:transparent;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:rgba(255,255,255,.30);
-
-    border-radius:10px;
-
-}
-/*=========================================================
-    RESPONSIVE DESIGN
-=========================================================*/
-
-/*==========================
-LAPTOP (1366px - 1600px)
-==========================*/
-
-@media (max-width:1600px){
-
-    header{
-
-        height:70px;
-
-        grid-template-columns:160px 1fr 280px;
-
-    }
-
-    .logo img{
-
-        height:50px;
-
-    }
-
-    .title h1{
-
-        font-size:34px;
-
-    }
-
-    .title p{
-
-        font-size:15px;
-
-    }
-
-    .content{
-
-        grid-template-columns:380px 1fr;
-
-        gap:15px;
-
-    }
-
-    .statusBox{
-
-        padding:15px;
-
-    }
-
-    .statusBox h2{
-
-        font-size:24px;
-
-    }
-
-    thead th{
-
-        font-size:16px;
-
-        padding:12px;
-
-    }
-
-    tbody td{
-
-        font-size:16px;
-
-        padding:10px;
-
-    }
-
-    #weather{
-
-        font-size:18px;
-
-    }
-
-    #currentDate{
-
-        font-size:15px;
-
-    }
-
-    #currentTime{
-
-        font-size:18px;
-
-    }
-
-    .welcome h2{
-
-        font-size:40px;
-
-    }
-
-    .welcome p{
-
-        font-size:18px;
-
-    }
-
-}
-
-
-/*==========================
-55" FULL HD TV
-1920 x 1080
-==========================*/
 
 @media (min-width:1900px){
 
@@ -951,189 +946,106 @@ LAPTOP (1366px - 1600px)
 
     }
 
-    header{
-
-        height:85px;
+    .topBar{
 
         grid-template-columns:190px 1fr 340px;
 
-        margin-bottom:18px;
+    }
+
+    .mainContent{
+
+        grid-template-columns:450px 1fr;
 
     }
 
-    .logo img{
-
-        height:65px;
-
-    }
-
-    .title h1{
-
-        font-size:46px;
-
-    }
-
-    .title p{
-
-        font-size:20px;
-
-    }
-
-    .content{
-
-        grid-template-columns:460px 1fr;
-
-        gap:22px;
-
-    }
-
-    .statusBox{
-
-        padding:20px;
-
-    }
-
-    .statusBox h2{
+    .panelTitle{
 
         font-size:30px;
 
-        margin-bottom:18px;
-
     }
 
-    thead th{
+    #statusTable td{
 
         font-size:20px;
 
-        padding:14px;
+    }
+
+    .heroText h2{
+
+        font-size:64px;
 
     }
 
-    tbody td{
+    .heroText p{
 
-        font-size:20px;
-
-        padding:12px;
-
-    }
-
-    #weather{
-
-        font-size:24px;
-
-    }
-
-    #currentDate{
-
-        font-size:18px;
-
-    }
-
-    #currentTime{
-
-        font-size:24px;
-
-    }
-
-    .welcome h2{
-
-        font-size:56px;
-
-    }
-
-    .welcome p{
-
-        font-size:26px;
-
-    }
-
-    footer{
-
-        font-size:15px;
+        font-size:28px;
 
     }
 
 }
 
+/*=========================================================
+    LAPTOP
+=========================================================*/
 
-/*==========================
-4K TV
-==========================*/
-
-@media (min-width:2500px){
+@media (max-width:1600px){
 
     .dashboard{
 
-        padding:25px;
+        padding:12px;
 
     }
 
-    .content{
+    .topBar{
 
-        grid-template-columns:560px 1fr;
-
-    }
-
-    .title h1{
-
-        font-size:60px;
+        grid-template-columns:160px 1fr 280px;
 
     }
 
-    .title p{
+    .mainContent{
 
-        font-size:26px;
-
-    }
-
-    .statusBox h2{
-
-        font-size:36px;
+        grid-template-columns:380px 1fr;
 
     }
 
-    thead th{
-
-        font-size:26px;
-
-    }
-
-    tbody td{
-
-        font-size:26px;
-
-        padding:16px;
-
-    }
-
-    #weather{
-
-        font-size:30px;
-
-    }
-
-    #currentDate{
+    .panelTitle{
 
         font-size:24px;
 
     }
 
-    #currentTime{
+    #statusTable td{
 
-        font-size:30px;
-
-    }
-
-    .welcome h2{
-
-        font-size:72px;
+        font-size:16px;
 
     }
 
-    .welcome p{
+    .heroText h2{
 
-        font-size:34px;
+        font-size:42px;
 
     }
+
+}
+
+/*=========================================================
+    FOOTER
+=========================================================*/
+
+footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:14px;
+
+    color:#fff;
+
+    opacity:.85;
+
+    letter-spacing:1px;
 
 }
