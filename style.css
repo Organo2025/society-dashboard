@@ -1,6 +1,6 @@
-/*==================================================
-ORGANO OFM DASHBOARD V7
-==================================================*/
+/*=====================================================
+ORGANO OFM DASHBOARD V8
+=====================================================*/
 
 *{
     margin:0;
@@ -9,22 +9,20 @@ ORGANO OFM DASHBOARD V7
     font-family:"Segoe UI",Arial,sans-serif;
 }
 
-html,body{
+html,
+body{
+
     width:100%;
     height:100%;
     overflow:hidden;
-    color:#fff;
+
 }
 
 body{
 
-    background:url("assets/background.jpg");
+    background:url("assets/background.jpg") center center/cover no-repeat fixed;
 
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
+    color:#fff;
 
 }
 
@@ -36,7 +34,7 @@ body{
 
     inset:0;
 
-    background:rgba(0,0,0,.12);
+    background:rgba(0,0,0,.10);
 
     backdrop-filter:blur(1px);
 
@@ -56,7 +54,7 @@ body{
 
     height:100vh;
 
-    padding:15px;
+    padding:18px;
 
     display:flex;
 
@@ -64,33 +62,43 @@ body{
 
 }
 
-/*========================================*/
+/*========================================
+HEADER
+========================================*/
 
-header{
+.topHeader{
 
-    height:70px;
+    height:100px;
 
     display:grid;
 
     grid-template-columns:
 
-    170px
+    220px
 
     1fr
 
-    260px;
+    360px;
 
     align-items:center;
 
-    margin-bottom:15px;
+    margin-bottom:18px;
 
 }
 
 /*========================================*/
 
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
 .logo img{
 
-    height:48px;
+    width:180px;
 
 }
 
@@ -104,55 +112,91 @@ header{
 
 .title h1{
 
-    font-size:34px;
-
-    letter-spacing:2px;
+    font-size:46px;
 
     font-weight:700;
 
-    text-shadow:0 3px 8px rgba(0,0,0,.6);
+    letter-spacing:3px;
+
+    text-shadow:0 4px 12px rgba(0,0,0,.55);
 
 }
 
 .title p{
 
-    font-size:14px;
-
-    opacity:.9;
-
-}
-
-/*========================================*/
-
-.headerRight{
-
-    text-align:right;
-
-}
-
-#weather{
+    margin-top:5px;
 
     font-size:18px;
+
+    letter-spacing:2px;
+
+}
+
+/*========================================
+WEATHER CARD
+========================================*/
+
+.weatherCard{
+
+    background:rgba(10,20,30,.40);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(14px);
+
+    padding:16px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+
+}
+
+.weatherRow{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
+
+.weatherDivider{
+
+    height:1px;
+
+    background:rgba(255,255,255,.15);
+
+    margin:12px 0;
+
+}
+
+.dateTime{
+
+    text-align:center;
 
 }
 
 #currentDate{
 
-    margin-top:5px;
+    font-size:18px;
 
-    font-size:15px;
+    margin-bottom:8px;
 
 }
 
 #currentTime{
 
-    margin-top:3px;
+    font-size:28px;
 
-    font-size:15px;
+    font-weight:700;
 
 }
 
-/*========================================*/
+/*========================================
+BODY
+========================================*/
 
 .content{
 
@@ -162,64 +206,57 @@ header{
 
     grid-template-columns:
 
-    360px
+    520px
 
     1fr;
 
-    gap:20px;
+    gap:22px;
 
 }
-/*==================================================
+
+/*========================================
 LEFT PANEL
-==================================================*/
+========================================*/
 
 .leftPanel{
 
     display:flex;
 
-    align-items:stretch;
-
 }
-
-/*==================================================
-STATUS BOX
-==================================================*/
 
 .statusBox{
 
     width:100%;
 
-    background:rgba(20,30,40,.32);
+    background:rgba(15,20,30,.35);
 
-    backdrop-filter:blur(10px);
+    border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(14px);
 
-    border-radius:18px;
+    border:1px solid rgba(255,255,255,.12);
 
-    padding:18px;
+    padding:24px;
 
-    box-shadow:0 10px 35px rgba(0,0,0,.35);
+    box-shadow:0 18px 45px rgba(0,0,0,.35);
 
 }
 
 .statusBox h2{
 
-    font-size:24px;
+    font-size:34px;
 
-    margin-bottom:18px;
+    margin-bottom:22px;
 
-    letter-spacing:1px;
+    border-left:6px solid #00BCD4;
 
-    border-left:5px solid #00BCD4;
-
-    padding-left:10px;
+    padding-left:14px;
 
 }
 
-/*==================================================
+/*========================================
 TABLE
-==================================================*/
+========================================*/
 
 table{
 
@@ -237,33 +274,19 @@ thead{
 
 thead th{
 
-    padding:12px;
+    padding:16px;
 
-    font-size:15px;
+    font-size:20px;
 
     text-align:left;
-
-    border-bottom:1px solid rgba(255,255,255,.15);
-
-}
-
-tbody tr{
-
-    transition:.25s;
-
-}
-
-tbody tr:hover{
-
-    background:rgba(255,255,255,.08);
 
 }
 
 tbody td{
 
-    padding:16px 14px;
+    padding:16px;
 
-    font-size:20px;
+    font-size:22px;
 
     border-bottom:1px solid rgba(255,255,255,.08);
 
@@ -273,9 +296,9 @@ tbody td:nth-child(2){
 
     text-align:center;
 
-    font-weight:700;
-
     color:#00E5FF;
+
+    font-weight:700;
 
 }
 
@@ -283,27 +306,84 @@ tbody td:nth-child(3){
 
     text-align:right;
 
-    color:#DDDDDD;
+    color:#ddd;
+
+}
+/*=====================================================
+AIR QUALITY
+=====================================================*/
+
+.divider{
+
+    border:none;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    margin:25px 0;
 
 }
 
-/*==================================================
+.airQuality h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+    color:#ffffff;
+
+}
+
+#aqLocation{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#00E5FF;
+
+    margin-bottom:18px;
+
+}
+
+.aqRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    font-size:22px;
+
+}
+
+.aqRow span:last-child{
+
+    font-weight:700;
+
+    color:#00E5FF;
+
+}
+
+/*=====================================================
 RIGHT PANEL
-==================================================*/
+=====================================================*/
 
 .rightPanel{
 
     position:relative;
 
-    border-radius:20px;
-
     overflow:hidden;
 
-    background:rgba(255,255,255,.05);
+    border-radius:22px;
 
     border:1px solid rgba(255,255,255,.12);
 
-    backdrop-filter:blur(2px);
+    background:rgba(255,255,255,.04);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 
 }
 
@@ -325,88 +405,68 @@ RIGHT PANEL
 
 }
 
-/*==================================================
-WELCOME TEXT
-==================================================*/
+/* Dark overlay for better visibility */
 
-.welcome{
+.imageOverlay{
 
     position:absolute;
 
-    left:50%;
+    inset:0;
 
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    text-align:center;
-
-    color:#fff;
-
-    text-shadow:0 4px 15px rgba(0,0,0,.6);
+    background:linear-gradient(
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.10)
+    );
 
 }
 
-.welcome h2{
-
-    font-size:42px;
-
-    letter-spacing:2px;
-
-    margin-bottom:10px;
-
-}
-
-.welcome p{
-
-    font-size:22px;
-
-    opacity:.95;
-
-}
-/*==================================================
+/*=====================================================
 FOOTER
-==================================================*/
+=====================================================*/
 
 footer{
 
-    height:28px;
+    height:40px;
+
+    margin-top:15px;
 
     display:flex;
 
+    justify-content:space-between;
+
     align-items:center;
-
-    justify-content:center;
-
-    font-size:25px;
 
     color:#ffffff;
 
-    opacity:.85;
+    font-size:16px;
+
+    padding:0 10px;
 
     letter-spacing:1px;
 
-    text-shadow:0 2px 8px rgba(0,0,0,.7);
+    text-shadow:0 2px 6px rgba(0,0,0,.5);
 
 }
 
-/*==================================================
-WEATHER
-==================================================*/
+/*=====================================================
+TABLE HOVER
+=====================================================*/
 
-#weather img{
+tbody tr{
 
-    width:60px;
-
-    vertical-align:middle;
-
-    margin-right:12px;
+    transition:.25s ease;
 
 }
 
-/*==================================================
+tbody tr:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/*=====================================================
 SCROLLBAR
-==================================================*/
+=====================================================*/
 
 ::-webkit-scrollbar{
 
@@ -414,228 +474,160 @@ SCROLLBAR
 
 }
 
-/*==================================================
-TABLE ANIMATION
-==================================================*/
-
-tbody tr{
-
-    animation:fadeUp .5s ease;
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateX(-15px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateX(0);
-
-}
-
-}
-
-/*==================================================
-LAPTOP
-==================================================*/
-
-@media(max-width:1600px){
-
-.content{
-
-grid-template-columns:330px 1fr;
-
-}
-
-.title h1{
-
-font-size:30px;
-
-}
-
-.statusBox h2{
-
-font-size:20px;
-
-}
-
-tbody td{
-
-font-size:20px;
-
-padding:16px 14px;
-
-}
-
-.welcome h2{
-
-font-size:34px;
-
-}
-
-.welcome p{
-
-font-size:18px;
-
-}
-
-}
-
-/*==================================================
-55" TV
-==================================================*/
-
-@media(min-width:1900px){
-
-.content{
-
-grid-template-columns:400px 1fr;
-
-}
-
-.title h1{
-
-font-size:42px;
-
-}
-
-.statusBox h2{
-
-font-size:26px;
-
-}
-
-tbody td{
-
-font-size:18px;
-
-padding:13px;
-
-}
-
-.welcome h2{
-
-font-size:54px;
-
-}
-
-.welcome p{
-
-font-size:28px;
-
-}
-
-}
-
-/*==================================================
-GLASS EFFECT
-==================================================*/
+/*=====================================================
+ANIMATION
+=====================================================*/
 
 .statusBox{
 
-background:rgba(15,20,30,.28);
-
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.35),
-
-inset 0 1px 1px rgba(255,255,255,.08);
+    animation:fadeLeft .8s ease;
 
 }
 
-/*==================================================
-RIGHT IMAGE OVERLAY
-==================================================*/
+.rightPanel{
 
-.heroImage::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:linear-gradient(
-
-90deg,
-
-rgba(0,0,0,.08),
-
-rgba(0,0,0,.03)
-
-);
+    animation:fadeRight .8s ease;
 
 }
 
-/*==================================================
-TABLE COLORS
-==================================================*/
+@keyframes fadeLeft{
 
-tbody tr:nth-child(1) td:nth-child(2){
+    from{
 
-color:#FFEB3B;
+        opacity:0;
 
-}
+        transform:translateX(-30px);
 
-tbody tr:nth-child(2) td:nth-child(2){
+    }
 
-color:#FFC107;
+    to{
 
-}
+        opacity:1;
 
-tbody tr:nth-child(3) td:nth-child(2){
+        transform:translateX(0);
 
-color:#4FC3F7;
+    }
 
 }
 
-tbody tr:nth-child(4) td:nth-child(2){
+@keyframes fadeRight{
 
-color:#29B6F6;
+    from{
 
-}
+        opacity:0;
 
-tbody tr:nth-child(5) td:nth-child(2){
+        transform:translateX(30px);
 
-color:#FF7043;
+    }
 
-}
+    to{
 
-tbody tr:nth-child(6) td:nth-child(2){
+        opacity:1;
 
-color:#EF5350;
+        transform:translateX(0);
 
-}
-
-tbody tr:nth-child(7) td:nth-child(2){
-
-color:#8BC34A;
+    }
 
 }
 
-tbody tr:nth-child(8) td:nth-child(2){
+/*=====================================================
+TV SCREEN (55")
+=====================================================*/
 
-color:#66BB6A;
+@media(min-width:1920px){
+
+    .content{
+
+        grid-template-columns:560px 1fr;
+
+    }
+
+    .title h1{
+
+        font-size:54px;
+
+    }
+
+    .title p{
+
+        font-size:22px;
+
+    }
+
+    .statusBox h2{
+
+        font-size:38px;
+
+    }
+
+    thead th{
+
+        font-size:22px;
+
+    }
+
+    tbody td{
+
+        font-size:24px;
+
+        padding:18px;
+
+    }
+
+    .weatherRow{
+
+        font-size:24px;
+
+    }
+
+    #currentTime{
+
+        font-size:34px;
+
+    }
+
+    .aqRow{
+
+        font-size:24px;
+
+    }
 
 }
 
-tbody tr:nth-child(9) td:nth-child(2){
+/*=====================================================
+LAPTOP
+=====================================================*/
 
-color:#00E5FF;
+@media(max-width:1366px){
 
-}
+    .content{
 
-tbody tr:nth-child(10) td:nth-child(2){
+        grid-template-columns:460px 1fr;
 
-color:#26C6DA;
+    }
+
+    .title h1{
+
+        font-size:36px;
+
+    }
+
+    tbody td{
+
+        font-size:18px;
+
+    }
+
+    .statusBox h2{
+
+        font-size:28px;
+
+    }
+
+    .weatherRow{
+
+        font-size:18px;
+
+    }
 
 }
