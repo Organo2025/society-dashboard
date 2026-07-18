@@ -152,7 +152,7 @@ TITLE
 
 .titleArea p{
 
-    margin-top:8px;
+    margin-top:5px;
 
     font-size:17px;
 
@@ -172,9 +172,9 @@ WEATHER
 
 #weather{
 
-    font-size:20px;
+    font-size:23px;
 
-    font-weight:500;
+    font-weight:700;
 
     margin-bottom:6px;
 
@@ -182,17 +182,17 @@ WEATHER
 
 #weather img{
 
-    width:25px;
+    width:34px;
 
     vertical-align:middle;
 
-    margin-right:10px;
+    margin-right:6px;
 
 }
 
 #currentDate{
 
-    font-size:15px;
+    font-size:17px;
 
     margin-bottom:4px;
 
@@ -200,9 +200,9 @@ WEATHER
 
 #currentTime{
 
-    font-size:5px;
+    font-size:23px;
 
-    font-weight:500;
+    font-weight:700;
 
 }
 
@@ -212,7 +212,7 @@ MAIN AREA
 
 .mainContent{
     display:grid;
-    grid-template-columns:580px 1fr;
+    grid-template-columns:600px 1fr;
     gap:20px;
     height:100%;
 }
