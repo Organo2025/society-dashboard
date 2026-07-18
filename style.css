@@ -172,7 +172,7 @@ WEATHER
 
 #weather{
 
-    font-size:23px;
+    font-size:20px;
 
     font-weight:700;
 
@@ -182,7 +182,7 @@ WEATHER
 
 #weather img{
 
-    width:34px;
+    width:25px;
 
     vertical-align:middle;
 
@@ -192,7 +192,7 @@ WEATHER
 
 #currentDate{
 
-    font-size:17px;
+    font-size:15px;
 
     margin-bottom:4px;
 
@@ -200,7 +200,7 @@ WEATHER
 
 #currentTime{
 
-    font-size:23px;
+    font-size:10px;
 
     font-weight:700;
 
