@@ -10,7 +10,8 @@ content="width=device-width, initial-scale=1.0">
 
 <title>ORGANO OFM DASHBOARD</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
@@ -20,16 +21,13 @@ content="width=device-width, initial-scale=1.0">
 
 <div class="dashboard">
 
-<!--==================================================
-HEADER
-===================================================-->
+<!-- ================= HEADER ================= -->
 
 <header>
 
 <div class="logo">
 
-<img src="assets/logo.png"
-alt="Organo Logo">
+<img src="assets/logo.png">
 
 </div>
 
@@ -45,7 +43,7 @@ alt="Organo Logo">
 
 <div id="weather">
 
-Loading Weather...
+Loading...
 
 </div>
 
@@ -57,111 +55,86 @@ Loading Weather...
 
 </header>
 
-<!--==================================================
-MAIN GRID
-===================================================-->
+<!-- ================= BODY ================= -->
 
-<div class="mainGrid">
+<div class="content">
 
-<!--=====================
-LEFT COLUMN
-======================-->
+<!-- LEFT PANEL -->
 
-<div class="leftColumn">
+<div class="leftPanel">
 
-<section class="section energy">
+<div class="statusBox">
 
-<h2>⚡ Energy</h2>
+<h2>
 
-<div
-class="cards"
-id="energyCards">
+📊 DAILY STATUS
 
-</div>
+</h2>
 
-</section>
+<table id="statusTable">
 
-<section class="section dg">
+<thead>
 
-<h2>⛽ Diesel Generators</h2>
+<tr>
 
-<div
-class="cards"
-id="dgCards">
+<th>Parameter</th>
 
-</div>
+<th>Value</th>
 
-</section>
+<th>Unit</th>
 
-</div>
+</tr>
 
-<!--=====================
-RIGHT COLUMN
-======================-->
+</thead>
 
-<div class="rightColumn">
+<tbody id="dashboardData">
 
-<section class="section water">
+<!-- JavaScript will fill this -->
 
-<h2>💧 Water</h2>
+</tbody>
 
-<div
-class="cards"
-id="waterCards">
+</table>
 
 </div>
 
-</section>
+</div>
 
-<section class="section amenities">
+<!-- RIGHT PANEL -->
 
-<h2>🏠 Amenities</h2>
+<div class="rightPanel">
 
-<div
-class="cards"
-id="amenityCards">
+<div class="heroImage">
+
+<div class="welcome">
+
+<h2>
+
+ORGANO ANTHARAM
+
+</h2>
+
+<p>
+
+Nature Living
+
+</p>
 
 </div>
 
-</section>
+</div>
 
 </div>
 
-<!--=====================
-AIR QUALITY
-======================-->
-
-<section
-class="section air fullWidth">
-
-<h2>🌍 Air Quality</h2>
-
-<div
-class="cards"
-id="airCards">
 </div>
-
-</section>
-
-</div>
-
-<!--==================================================
-FOOTER
-===================================================-->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
 © 2026 Organo Eco Habitats Pvt. Ltd.
-&nbsp;|&nbsp;
-Daily OFM Dashboard
 
 </footer>
 
 </div>
-
-<!--==================================================
-JAVASCRIPT
-===================================================-->
 
 <script src="script.js"></script>
 
