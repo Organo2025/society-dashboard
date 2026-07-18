@@ -1,4 +1,3 @@
-js = r'''// =====================================================
 // ORGANO OFM DASHBOARD V9
 // =====================================================
 
@@ -106,8 +105,4 @@ updateClock();
 setInterval(updateClock,1000);
 setInterval(loadDashboard,60000);
 setInterval(loadWeather,600000);
-'''
 
-out="/mnt/data/script.js"
-Path(out).write_text(js,encoding="utf-8")
-print(out)
