@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ORGANO OFM Dashboard V8</title>
+<title>ORGANO OFM Dashboard V9</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -14,32 +14,22 @@
 
 <body>
 
-<!-- Background Overlay -->
-<div class="overlay"></div>
-
-<!-- ===========================
-     DASHBOARD
-=========================== -->
+<!-- Background -->
+<div class="backgroundOverlay"></div>
 
 <div class="dashboard">
 
-    <!-- ===========================
-         HEADER
-    =========================== -->
+    <!-- ================= HEADER ================= -->
 
-    <header>
+    <header class="topBar">
 
-        <!-- Logo -->
+        <div class="logoArea">
 
-        <div class="logo">
-
-            <img src="assets/logo.png" alt="Organo">
+            <img src="assets/logo.png" alt="Organo Logo">
 
         </div>
 
-        <!-- Title -->
-
-        <div class="title">
+        <div class="titleArea">
 
             <h1>ORGANO ANTHARAM</h1>
 
@@ -47,9 +37,7 @@
 
         </div>
 
-        <!-- Weather -->
-
-        <div class="headerRight">
+        <div class="weatherArea">
 
             <div id="weather">
 
@@ -65,95 +53,143 @@
 
     </header>
 
+    <!-- ================= KPI CARDS ================= -->
 
+    <section class="kpiContainer">
 
-    <!-- ===========================
-         MAIN CONTENT
-    =========================== -->
+        <div class="kpiCard">
 
-    <main class="content">
+            <div class="icon">⚡</div>
 
+            <div class="label">Grid Energy</div>
 
+            <div class="value" id="gridEnergy">--</div>
 
-        <!-- ===================
-             LEFT PANEL
-        ==================== -->
+        </div>
 
-        <aside class="leftPanel">
+        <div class="kpiCard">
 
-            <div class="statusBox">
+            <div class="icon">☀️</div>
 
-                <h2>
+            <div class="label">Solar</div>
 
-                    📊 DAILY STATUS
+            <div class="value" id="solarGeneration">--</div>
 
-                </h2>
+        </div>
 
+        <div class="kpiCard">
 
+            <div class="icon">⛽</div>
 
-                <table id="statusTable">
+            <div class="label">DG Units</div>
 
-                    <thead>
+            <div class="value" id="dgUnits">--</div>
 
-                        <tr>
+        </div>
 
-                            <th>Parameter</th>
+        <div class="kpiCard">
 
-                            <th>Value</th>
+            <div class="icon">🛢</div>
 
-                            <th>Unit</th>
+            <div class="label">Diesel</div>
 
-                        </tr>
+            <div class="value" id="diesel">--</div>
 
-                    </thead>
+        </div>
 
-                    <tbody id="dashboardData">
+        <div class="kpiCard">
 
-                        <!-- Filled by JavaScript -->
+            <div class="icon">💧</div>
 
-                    </tbody>
+            <div class="label">Water</div>
 
-                </table>
+            <div class="value" id="water">--</div>
+
+        </div>
+
+        <div class="kpiCard">
+
+            <div class="icon">🌍</div>
+
+            <div class="label">AQI</div>
+
+            <div class="value" id="aqi">--</div>
+
+        </div>
+
+        <div class="kpiCard">
+
+            <div class="icon">🐝</div>
+
+            <div class="label">Hive</div>
+
+            <div class="value" id="hive">--</div>
+
+        </div>
+
+        <div class="kpiCard">
+
+            <div class="icon">🚰</div>
+
+            <div class="label">STP</div>
+
+            <div class="value" id="stp">--</div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="mainContent">
+
+        <!-- LEFT PANEL -->
+
+        <aside class="statusPanel">
+
+            <div class="panelTitle">
+
+                📊 DAILY STATUS
 
             </div>
 
+            <table id="statusTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Parameter</th>
+
+                        <th>Value</th>
+
+                        <th>Unit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="dashboardData">
+
+                </tbody>
+
+            </table>
+
         </aside>
 
+        <!-- RIGHT PANEL -->
 
-
-        <!-- ===================
-             RIGHT PANEL
-        ==================== -->
-
-        <section class="rightPanel">
+        <section class="imagePanel">
 
             <div class="heroImage">
-
-                <!-- Optional Future Content -->
-
-                <div class="imageOverlay">
-
-                    <div class="welcome">
-
-                        <!-- Future Widgets -->
-
-                    </div>
-
-                </div>
 
             </div>
 
         </section>
 
-
-
     </main>
 
-
-
-    <!-- ===========================
-         FOOTER
-    =========================== -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -161,11 +197,7 @@
 
     </footer>
 
-
-
 </div>
-
-
 
 <script src="script.js"></script>
 
